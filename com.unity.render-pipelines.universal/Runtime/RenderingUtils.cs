@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine.Experimental.Rendering;
@@ -335,6 +336,7 @@ namespace UnityEngine.Rendering.Universal
         /// </summary>
         /// <param name="colorBuffers"></param>
         /// <returns></returns>
+        [Obsolete]
         internal static uint GetValidColorBufferCount(RenderTargetIdentifier[] colorBuffers)
         {
             uint nonNullColorBuffers = 0;
@@ -343,6 +345,25 @@ namespace UnityEngine.Rendering.Universal
                 foreach (var identifier in colorBuffers)
                 {
                     if (identifier != 0)
+                        ++nonNullColorBuffers;
+                }
+            }
+            return nonNullColorBuffers;
+        }
+
+        /// <summary>
+        /// Return the number of items in colorBuffers actually referring to an existing RenderTarget
+        /// </summary>
+        /// <param name="colorBuffers"></param>
+        /// <returns></returns>
+        internal static uint GetValidColorBufferCount(RTHandle[] colorBuffers)
+        {
+            uint nonNullColorBuffers = 0;
+            if (colorBuffers != null)
+            {
+                foreach (var identifier in colorBuffers)
+                {
+                    if (identifier?.nameID != 0)
                         ++nonNullColorBuffers;
                 }
             }
