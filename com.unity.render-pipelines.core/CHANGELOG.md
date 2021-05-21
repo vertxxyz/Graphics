@@ -6,7 +6,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Fixed missing warning UI about Projector component being unsupported (case 1300327).
+
+## [12.0.1] - 2021-05-21
+
+This version was shipped with Unity 2021.2.0a18.2635
+
+### Changed
+- ClearFlag.Depth does not implicitely clear stencil anymore. ClearFlag.Stencil added.
+
 ## [12.0.0] - 2021-01-11
+
+This version was shipped with Unity 2021.2.0a17.2555.
 
 ### Changed
 - ClearFlag.Depth does not implicitely clear stencil anymore. ClearFlag.Stencil added.
