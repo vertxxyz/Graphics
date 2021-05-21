@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [2021.2.0a18.2635] - 2021-01-11
+## [12.0.0] - 2021-01-11
 
 ### Changed
 - ClearFlag.Depth does not implicitely clear stencil anymore. ClearFlag.Stencil added.
