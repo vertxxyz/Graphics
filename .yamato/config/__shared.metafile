@@ -2,13 +2,13 @@ target_branch: 7.x.x/release # specifies the branch on which recurrent or pr tri
 # target_branch_editor_ci: ci/editor-pinning # specifies the branch on which editor pinning is done
 target_editor: 2019.4 # specifies the target editor used for some package/preview publish jobs
 editors: # applied for all yml files
-  - track: 2019.4
+  - track: 2019.4/staging
     name: 2019.4
     rerun_strategy: on-new-revision
     editor_pinning: False
     nightly: False
     weekly: True
-  - track: 2019.4
+  - track: 2019.4/staging
     name: fast-2019.4
     rerun_strategy: on-new-revision
     editor_pinning: False
