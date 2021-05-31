@@ -155,13 +155,13 @@ HDRP_Linux_Vulkan_Standalone_mono_Linear_trunk:
       -  command: curl -s https://artifactory.prd.it.unity3d.com/artifactory/unity-tools-local/utr-standalone/utr --output utr
          retries: 2
       -  command: chmod +x utr
-      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --platform=StandaloneLinux64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
+      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_Tests/test-results --platform=StandaloneLinux64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
          retries: 2
     artifacts:
         logs:
             paths:
               -  "**/test-results/**"
-              -  "TestProjects/HDRP_RuntimeTests/Logs/*.log"
+              -  "TestProjects/HDRP_Tests/Logs/*.log"
     dependencies:
       -  path: .yamato/_editor_priming.yml#editor:priming:trunk:Linux
          rerun: on_new_revision
@@ -190,13 +190,13 @@ Build_HDRP_Linux_Vulkan_Standalone_mono_Linear_trunk:
          retries: 2
       -  command: sudo unity-downloader-cli --source-file unity_revision.txt -c editor -c il2cpp  --wait --published-only
          retries: 2
-      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="vulkan" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Vulkan" --platform=StandaloneLinux64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=$TEST_FILTER --testproject=./TestProjects/HDRP_RuntimeTests --timeout=1200
+      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_Tests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="vulkan" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Vulkan" --platform=StandaloneLinux64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=$TEST_FILTER --testproject=./TestProjects/HDRP_Tests --timeout=1200
          retries: 2
     artifacts:
         logs:
             paths:
               -  "**/test-results/**"
-              -  "TestProjects/HDRP_RuntimeTests/Logs/*.log"
+              -  "TestProjects/HDRP_Tests/Logs/*.log"
         players:
             paths:
               -  "players*/**"
@@ -218,13 +218,13 @@ HDRP_Linux_Vulkan_Standalone_cache_mono_Linear_trunk:
       -  command: curl -s https://artifactory.prd.it.unity3d.com/artifactory/unity-tools-local/utr-standalone/utr --output utr
          retries: 2
       -  command: chmod +x utr
-      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --platform=StandaloneLinux64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
+      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_Tests/test-results --platform=StandaloneLinux64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
          retries: 2
     artifacts:
         logs:
             paths:
               -  "**/test-results/**"
-              -  "TestProjects/HDRP_RuntimeTests/Logs/*.log"
+              -  "TestProjects/HDRP_Tests/Logs/*.log"
     dependencies:
       -  path: .yamato/_editor_priming.yml#editor:priming:trunk:Linux
          rerun: on_new_revision
@@ -253,13 +253,13 @@ Build_HDRP_Linux_Vulkan_Standalone_cache_mono_Linear_trunk:
          retries: 2
       -  command: sudo unity-downloader-cli --source-file unity_revision.txt -c editor -c il2cpp  --wait --published-only
          retries: 2
-      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-adb2" --extra-editor-arg="-cacheServerEnableDownload" --extra-editor-arg="true" --extra-editor-arg="-cacheServerEnableUpload" --extra-editor-arg="true" --extra-editor-arg="-cacheServerEndpoint" --extra-editor-arg="cacheserver-slo.hq.unity3d.com" --extra-editor-arg="-cacheServerNamespacePrefix" --extra-editor-arg="{{cache.cacheServerNamespacePrefix}}" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-enableCacheServer" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="vulkan" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Vulkan" --platform=StandaloneLinux64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=$TEST_FILTER --testproject=./TestProjects/HDRP_RuntimeTests --timeout=3000
+      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_Tests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-adb2" --extra-editor-arg="-cacheServerEnableDownload" --extra-editor-arg="true" --extra-editor-arg="-cacheServerEnableUpload" --extra-editor-arg="true" --extra-editor-arg="-cacheServerEndpoint" --extra-editor-arg="cacheserver-slo.hq.unity3d.com" --extra-editor-arg="-cacheServerNamespacePrefix" --extra-editor-arg="{{cache.cacheServerNamespacePrefix}}" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-enableCacheServer" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="vulkan" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Vulkan" --platform=StandaloneLinux64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=$TEST_FILTER --testproject=./TestProjects/HDRP_Tests --timeout=3000
          retries: 2
     artifacts:
         logs:
             paths:
               -  "**/test-results/**"
-              -  "TestProjects/HDRP_RuntimeTests/Logs/*.log"
+              -  "TestProjects/HDRP_Tests/Logs/*.log"
         players:
             paths:
               -  "players*/**"
@@ -413,13 +413,13 @@ HDRP_Linux_Vulkan_Standalone_mono_Linear_CUSTOM-REVISION:
       -  command: curl -s https://artifactory.prd.it.unity3d.com/artifactory/unity-tools-local/utr-standalone/utr --output utr
          retries: 2
       -  command: chmod +x utr
-      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --platform=StandaloneLinux64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
+      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_Tests/test-results --platform=StandaloneLinux64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
          retries: 2
     artifacts:
         logs:
             paths:
               -  "**/test-results/**"
-              -  "TestProjects/HDRP_RuntimeTests/Logs/*.log"
+              -  "TestProjects/HDRP_Tests/Logs/*.log"
     dependencies:
       -  path: .yamato/_editor_priming.yml#editor:priming:CUSTOM-REVISION:Linux
          rerun: on_new_revision
@@ -448,13 +448,13 @@ Build_HDRP_Linux_Vulkan_Standalone_mono_Linear_CUSTOM-REVISION:
          retries: 2
       -  command: sudo unity-downloader-cli --source-file unity_revision.txt -c editor -c il2cpp  --wait --published-only
          retries: 2
-      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="vulkan" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Vulkan" --platform=StandaloneLinux64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=$TEST_FILTER --testproject=./TestProjects/HDRP_RuntimeTests --timeout=1200
+      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_Tests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="vulkan" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Vulkan" --platform=StandaloneLinux64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=$TEST_FILTER --testproject=./TestProjects/HDRP_Tests --timeout=1200
          retries: 2
     artifacts:
         logs:
             paths:
               -  "**/test-results/**"
-              -  "TestProjects/HDRP_RuntimeTests/Logs/*.log"
+              -  "TestProjects/HDRP_Tests/Logs/*.log"
         players:
             paths:
               -  "players*/**"
@@ -476,13 +476,13 @@ HDRP_Linux_Vulkan_Standalone_cache_mono_Linear_CUSTOM-REVISION:
       -  command: curl -s https://artifactory.prd.it.unity3d.com/artifactory/unity-tools-local/utr-standalone/utr --output utr
          retries: 2
       -  command: chmod +x utr
-      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --platform=StandaloneLinux64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
+      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_Tests/test-results --platform=StandaloneLinux64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
          retries: 2
     artifacts:
         logs:
             paths:
               -  "**/test-results/**"
-              -  "TestProjects/HDRP_RuntimeTests/Logs/*.log"
+              -  "TestProjects/HDRP_Tests/Logs/*.log"
     dependencies:
       -  path: .yamato/_editor_priming.yml#editor:priming:CUSTOM-REVISION:Linux
          rerun: on_new_revision
@@ -511,13 +511,13 @@ Build_HDRP_Linux_Vulkan_Standalone_cache_mono_Linear_CUSTOM-REVISION:
          retries: 2
       -  command: sudo unity-downloader-cli --source-file unity_revision.txt -c editor -c il2cpp  --wait --published-only
          retries: 2
-      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-adb2" --extra-editor-arg="-cacheServerEnableDownload" --extra-editor-arg="true" --extra-editor-arg="-cacheServerEnableUpload" --extra-editor-arg="true" --extra-editor-arg="-cacheServerEndpoint" --extra-editor-arg="cacheserver-slo.hq.unity3d.com" --extra-editor-arg="-cacheServerNamespacePrefix" --extra-editor-arg="{{cache.cacheServerNamespacePrefix}}" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-enableCacheServer" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="vulkan" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Vulkan" --platform=StandaloneLinux64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=$TEST_FILTER --testproject=./TestProjects/HDRP_RuntimeTests --timeout=3000
+      -  command: DISPLAY=:0.0 ./utr --artifacts_path=TestProjects/HDRP_Tests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-adb2" --extra-editor-arg="-cacheServerEnableDownload" --extra-editor-arg="true" --extra-editor-arg="-cacheServerEnableUpload" --extra-editor-arg="true" --extra-editor-arg="-cacheServerEndpoint" --extra-editor-arg="cacheserver-slo.hq.unity3d.com" --extra-editor-arg="-cacheServerNamespacePrefix" --extra-editor-arg="{{cache.cacheServerNamespacePrefix}}" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-enableCacheServer" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="vulkan" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Vulkan" --platform=StandaloneLinux64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=$TEST_FILTER --testproject=./TestProjects/HDRP_Tests --timeout=3000
          retries: 2
     artifacts:
         logs:
             paths:
               -  "**/test-results/**"
-              -  "TestProjects/HDRP_RuntimeTests/Logs/*.log"
+              -  "TestProjects/HDRP_Tests/Logs/*.log"
         players:
             paths:
               -  "players*/**"
