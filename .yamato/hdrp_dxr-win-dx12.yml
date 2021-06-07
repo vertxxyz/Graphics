@@ -44,10 +44,9 @@ HDRP_DXR_Win_DX12_Standalone_mono_Linear_trunk:
 Build_HDRP_DXR_Win_DX12_Standalone_mono_Linear_trunk:
     name: Build HDRP_DXR on Win_DX12_mono_Linear_Standalone_build_Player on version trunk
     agent:
-        type: Unity::VM::GPU
+        type: Unity::VM
         image: graphics-foundation/win10-dxr:stable
-        flavor: b1.large
-        model: rtx2080
+        flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
         CUSTOM_REVISION: '{{trunk.changeset.id}}'
@@ -185,10 +184,9 @@ HDRP_DXR_Win_DX12_Standalone_mono_Linear_CUSTOM-REVISION:
 Build_HDRP_DXR_Win_DX12_Standalone_mono_Linear_CUSTOM-REVISION:
     name: Build HDRP_DXR on Win_DX12_mono_Linear_Standalone_build_Player on version CUSTOM-REVISION
     agent:
-        type: Unity::VM::GPU
+        type: Unity::VM
         image: graphics-foundation/win10-dxr:stable
-        flavor: b1.large
-        model: rtx2080
+        flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
         CUSTOM_REVISION: custom_revision_not_set
