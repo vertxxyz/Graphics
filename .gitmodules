@@ -1,0 +1,3 @@
+[submodule "privacy-test"]
+	path = privacy-test
+	url = git@github.cds.internal.unity3d.com:theo-penavaire/privacy-test.git
