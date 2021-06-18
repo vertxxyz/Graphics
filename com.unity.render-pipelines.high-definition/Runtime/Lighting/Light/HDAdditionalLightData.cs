@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Assertions;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -120,6 +121,9 @@ namespace UnityEngine.Rendering.HighDefinition
         internal static HashSet<HDAdditionalLightData> s_overlappingHDLights = new HashSet<HDAdditionalLightData>();
 
         #region HDLight Properties API
+
+        [ExcludeCopy]
+        internal HDLightEntity lightEntity = HDLightEntity.Invalid;
 
         [SerializeField, FormerlySerializedAs("displayLightIntensity")]
         float m_Intensity;
@@ -239,6 +243,7 @@ namespace UnityEngine.Rendering.HighDefinition
                 if (m_LightDimmer == value)
                     return;
 
+                HDLightEntityCollection.instance.UpdateLightDimmer(lightEntity, m_LightDimmer);
                 m_LightDimmer = Mathf.Clamp(value, 0.0f, 16.0f);
             }
         }
@@ -257,6 +262,7 @@ namespace UnityEngine.Rendering.HighDefinition
                     return;
 
                 m_VolumetricDimmer = Mathf.Clamp(value, 0.0f, 16.0f);
+                HDLightEntityCollection.instance.UpdateVolumetricDimmer(lightEntity, m_VolumetricDimmer);
             }
         }
 
@@ -303,6 +309,7 @@ namespace UnityEngine.Rendering.HighDefinition
                     return;
 
                 m_FadeDistance = Mathf.Clamp(value, 0, float.MaxValue);
+                HDLightEntityCollection.instance.UpdateFadeDistance(lightEntity, m_FadeDistance);
             }
         }
 
@@ -321,6 +328,7 @@ namespace UnityEngine.Rendering.HighDefinition
                     return;
 
                 m_VolumetricFadeDistance = Mathf.Clamp(value, 0, float.MaxValue);
+                HDLightEntityCollection.instance.UpdateVolumetricFadeDistance(lightEntity, m_VolumetricFadeDistance);
             }
         }
 
@@ -338,6 +346,7 @@ namespace UnityEngine.Rendering.HighDefinition
                     return;
 
                 m_AffectDiffuse = value;
+                HDLightEntityCollection.instance.UpdateAffectDiffuse(lightEntity, m_AffectDiffuse);
             }
         }
 
@@ -355,6 +364,7 @@ namespace UnityEngine.Rendering.HighDefinition
                     return;
 
                 m_AffectSpecular = value;
+                HDLightEntityCollection.instance.UpdateAffectSpecular(lightEntity, m_AffectSpecular);
             }
         }
 
@@ -655,6 +665,7 @@ namespace UnityEngine.Rendering.HighDefinition
                 if (m_IncludeForRayTracing == value)
                     return;
 
+                HDLightEntityCollection.instance.UpdateIncludeForRayTracing(lightEntity, m_IncludeForRayTracing);
                 UpdateAllLightValues();
             }
         }
@@ -693,6 +704,7 @@ namespace UnityEngine.Rendering.HighDefinition
                     return;
 
                 m_UseScreenSpaceShadows = value;
+                HDLightEntityCollection.instance.UpdateUseScreenSpaceShadows(lightEntity, m_UseScreenSpaceShadows);
             }
         }
 
@@ -848,6 +860,7 @@ namespace UnityEngine.Rendering.HighDefinition
                     return;
 
                 m_UseRayTracedShadows = value;
+                HDLightEntityCollection.instance.UpdateUseRayTracedShadows(lightEntity, m_UseRayTracedShadows);
             }
         }
 
@@ -1295,6 +1308,7 @@ namespace UnityEngine.Rendering.HighDefinition
                     return;
 
                 m_ShadowDimmer = Mathf.Clamp01(value);
+                HDLightEntityCollection.instance.UpdateShadowDimmer(lightEntity, m_ShadowDimmer);
             }
         }
 
@@ -1330,6 +1344,7 @@ namespace UnityEngine.Rendering.HighDefinition
                     return;
 
                 m_ShadowFadeDistance = Mathf.Clamp(value, 0, float.MaxValue);
+                HDLightEntityCollection.instance.UpdateShadowFadeDistance(lightEntity, m_ShadowFadeDistance);
             }
         }
 
@@ -1897,6 +1912,12 @@ namespace UnityEngine.Rendering.HighDefinition
 
             SetEmissiveMeshRendererEnabled(false);
             s_overlappingHDLights.Remove(this);
+
+            if (lightEntity.valid)
+            {
+                HDLightEntityCollection.instance.DestroyEntity(lightEntity);
+                lightEntity = HDLightEntity.Invalid;
+            }
         }
 
         void SetEmissiveMeshRendererEnabled(bool enabled)
@@ -3513,6 +3534,26 @@ namespace UnityEngine.Rendering.HighDefinition
             }
 
             SetEmissiveMeshRendererEnabled(true);
+
+            Assert.IsFalse(lightEntity.valid);
+            HDLightEntityCollection collection = HDLightEntityCollection.instance;
+            lightEntity = collection.CreateEntity(legacyLight.GetInstanceID(), transform);
+
+            collection.UpdateAOVGameObject(lightEntity, legacyLight.gameObject);
+            collection.UpdatePointLightType(lightEntity, m_PointlightHDType);
+            collection.UpdateSpotLightShape(lightEntity,  m_SpotLightShape);
+            collection.UpdateAreaLightShape(lightEntity, m_AreaLightShape);
+            collection.UpdateFadeDistance(lightEntity, m_FadeDistance);
+            collection.UpdateVolumetricFadeDistance(lightEntity, m_VolumetricFadeDistance);
+            collection.UpdateIncludeForRayTracing(lightEntity, m_IncludeForRayTracing);
+            collection.UpdateUseScreenSpaceShadows(lightEntity, m_UseScreenSpaceShadows);
+            collection.UpdateUseRayTracedShadows(lightEntity, m_UseRayTracedShadows);
+            collection.UpdateLightDimmer(lightEntity, m_LightDimmer);
+            collection.UpdateVolumetricDimmer(lightEntity, m_VolumetricDimmer);
+            collection.UpdateShadowDimmer(lightEntity, m_ShadowDimmer);
+            collection.UpdateShadowFadeDistance(lightEntity, m_ShadowFadeDistance);
+            collection.UpdateAffectDiffuse(lightEntity, m_AffectDiffuse);
+            collection.UpdateAffectSpecular(lightEntity, m_AffectSpecular);
         }
 
         /// <summary>

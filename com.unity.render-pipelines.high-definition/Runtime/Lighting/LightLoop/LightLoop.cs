@@ -2319,7 +2319,10 @@ namespace UnityEngine.Rendering.HighDefinition
                         m_TextureCaches.lightCookieManager.ReserveSpace(cookieParams.texture);
                 }
 
-                CoreUnsafeUtils.QuickSort(m_SortKeys, 0, sortCount - 1); // Call our own quicksort instead of Array.Sort(sortKeys, 0, sortCount) so we don't allocate memory (note the SortCount-1 that is different from original call).
+                using (new ProfilingScope(cmd, ProfilingSampler.Get(HDProfileId.SortVisibleLights)))
+                {
+                    CoreUnsafeUtils.QuickSort(m_SortKeys, 0, sortCount - 1); // Call our own quicksort instead of Array.Sort(sortKeys, 0, sortCount) so we don't allocate memory (note the SortCount-1 that is different from original call).
+                }
                 return sortCount;
             }
         }
@@ -2661,6 +2664,7 @@ namespace UnityEngine.Rendering.HighDefinition
         bool PrepareLightsForGPU(
             CommandBuffer cmd,
             HDCamera hdCamera,
+            HDVisibleLightEntities visibleLightEntities,
             CullingResults cullResults,
             HDProbeCullingResults hdProbeCullingResults,
             LocalVolumetricFogList localVolumetricFogList,
@@ -2671,6 +2675,9 @@ namespace UnityEngine.Rendering.HighDefinition
             var hasDebugLightFilter = debugLightFilter != DebugLightFilterMode.None;
 
             HDShadowManager.cachedShadowManager.AssignSlotsInAtlases();
+
+            var lightLoopSettings = asset.currentPlatformRenderPipelineSettings.lightLoopSettings;
+            visibleLightEntities.PrepareLightsForGPU(hdCamera, cullResults, aovRequest, lightLoopSettings, m_CurrentDebugDisplaySettings);
 
             using (new ProfilingScope(cmd, ProfilingSampler.Get(HDProfileId.PrepareLightsForGPU)))
             {
@@ -2787,6 +2794,8 @@ namespace UnityEngine.Rendering.HighDefinition
                 PushLightDataGlobalParams(cmd);
                 PushShadowGlobalParams(cmd);
             }
+
+            visibleLightEntities.Reset();
 
             m_EnableBakeShadowMask = m_EnableBakeShadowMask && hdCamera.frameSettings.IsEnabled(FrameSettingsField.Shadowmask);
             return m_EnableBakeShadowMask;

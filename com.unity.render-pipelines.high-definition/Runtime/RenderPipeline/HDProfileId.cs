@@ -152,6 +152,8 @@ namespace UnityEngine.Rendering.HighDefinition
         PrepareGPUProbeData,
         ConvertLightsGpuFormat,
         ProcessVisibleLights,
+        SortVisibleLights,
+        BuildVisibleLightEntities,
 
         // Profile sampler for shadow
         RenderShadowMaps,
