@@ -24,6 +24,8 @@ pre_pack_hdrp_template_Win_2020.3:
               -  "com.unity.template-hd/Library/Artifacts/**"
               -  "com.unity.template-hd/Library/ArtifactDB"
               -  "com.unity.template-hd/Library/SourceAssetDB"
+              -  "**/test-results/**"
+              -  "com.unity.template-hd/Logs/*.log"
 pack_hdrp_template_Win_2020.3:
     name: Pack HDRP Template Win 2020.3
     agent:
@@ -72,6 +74,8 @@ pre_pack_hdrp_template_OSX_2020.3:
               -  "com.unity.template-hd/Library/Artifacts/**"
               -  "com.unity.template-hd/Library/ArtifactDB"
               -  "com.unity.template-hd/Library/SourceAssetDB"
+              -  "**/test-results/**"
+              -  "com.unity.template-hd/Logs/*.log"
 pack_hdrp_template_OSX_2020.3:
     name: Pack HDRP Template OSX 2020.3
     agent:
@@ -160,6 +164,8 @@ pre_pack_hdrp_template_Win_CUSTOM-REVISION:
               -  "com.unity.template-hd/Library/Artifacts/**"
               -  "com.unity.template-hd/Library/ArtifactDB"
               -  "com.unity.template-hd/Library/SourceAssetDB"
+              -  "**/test-results/**"
+              -  "com.unity.template-hd/Logs/*.log"
 pack_hdrp_template_Win_CUSTOM-REVISION:
     name: Pack HDRP Template Win CUSTOM-REVISION
     agent:
@@ -211,6 +217,8 @@ pre_pack_hdrp_template_OSX_CUSTOM-REVISION:
               -  "com.unity.template-hd/Library/Artifacts/**"
               -  "com.unity.template-hd/Library/ArtifactDB"
               -  "com.unity.template-hd/Library/SourceAssetDB"
+              -  "**/test-results/**"
+              -  "com.unity.template-hd/Logs/*.log"
 pack_hdrp_template_OSX_CUSTOM-REVISION:
     name: Pack HDRP Template OSX CUSTOM-REVISION
     agent:
@@ -298,6 +306,8 @@ pre_pack_universal_template_Win_2020.3:
               -  "com.unity.template-universal/Library/Artifacts/**"
               -  "com.unity.template-universal/Library/ArtifactDB"
               -  "com.unity.template-universal/Library/SourceAssetDB"
+              -  "**/test-results/**"
+              -  "com.unity.template-universal/Logs/*.log"
 pack_universal_template_Win_2020.3:
     name: Pack Universal Template Win 2020.3
     agent:
@@ -346,6 +356,8 @@ pre_pack_universal_template_OSX_2020.3:
               -  "com.unity.template-universal/Library/Artifacts/**"
               -  "com.unity.template-universal/Library/ArtifactDB"
               -  "com.unity.template-universal/Library/SourceAssetDB"
+              -  "**/test-results/**"
+              -  "com.unity.template-universal/Logs/*.log"
 pack_universal_template_OSX_2020.3:
     name: Pack Universal Template OSX 2020.3
     agent:
@@ -434,6 +446,8 @@ pre_pack_universal_template_Win_CUSTOM-REVISION:
               -  "com.unity.template-universal/Library/Artifacts/**"
               -  "com.unity.template-universal/Library/ArtifactDB"
               -  "com.unity.template-universal/Library/SourceAssetDB"
+              -  "**/test-results/**"
+              -  "com.unity.template-universal/Logs/*.log"
 pack_universal_template_Win_CUSTOM-REVISION:
     name: Pack Universal Template Win CUSTOM-REVISION
     agent:
@@ -485,6 +499,8 @@ pre_pack_universal_template_OSX_CUSTOM-REVISION:
               -  "com.unity.template-universal/Library/Artifacts/**"
               -  "com.unity.template-universal/Library/ArtifactDB"
               -  "com.unity.template-universal/Library/SourceAssetDB"
+              -  "**/test-results/**"
+              -  "com.unity.template-universal/Logs/*.log"
 pack_universal_template_OSX_CUSTOM-REVISION:
     name: Pack Universal Template OSX CUSTOM-REVISION
     agent:
