@@ -18,6 +18,9 @@ pre_pack_hdrp_template_Win_2020.3:
       -  choco install unity-downloader-cli -y -s https://artifactory.prd.it.unity3d.com/artifactory/api/nuget/unity-choco-local
       -  unity-downloader-cli --source-file unity_revision.txt -c editor --wait --published-only
       -  .Editor\Unity.exe -projectPath com.unity.template-hd -batchmode -quit
+    after:
+      -  copy %LOCALAPPDATA%\Unity\Editor\Editor.log .
+      -  copy %USERPROFILE%/AppData/LocalLow/DefaultCompany/ProductName/Player.log .
     dependencies:
       -  .yamato/_editor_priming.yml#editor:priming:2020.3:Win
     artifacts:
@@ -28,8 +31,8 @@ pre_pack_hdrp_template_Win_2020.3:
               -  "com.unity.template-hd/Library/SourceAssetDB"
         logs:
             paths:
-              -  "%LOCALAPPDATA%/Unity/Editor/Editor.log"
-              -  "%USERPROFILE%/AppData/LocalLow/DefaultCompany/ProductName/Player.log"
+              -  "./Editor.log"
+              -  "./Player.log"
 pack_hdrp_template_Win_2020.3:
     name: Pack HDRP Template Win 2020.3
     agent:
@@ -314,6 +317,9 @@ pre_pack_universal_template_Win_2020.3:
       -  choco install unity-downloader-cli -y -s https://artifactory.prd.it.unity3d.com/artifactory/api/nuget/unity-choco-local
       -  unity-downloader-cli --source-file unity_revision.txt -c editor --wait --published-only
       -  .Editor\Unity.exe -projectPath com.unity.template-universal -batchmode -quit
+    after:
+      -  copy %LOCALAPPDATA%\Unity\Editor\Editor.log .
+      -  copy %USERPROFILE%/AppData/LocalLow/DefaultCompany/ProductName/Player.log .
     dependencies:
       -  .yamato/_editor_priming.yml#editor:priming:2020.3:Win
     artifacts:
@@ -324,8 +330,8 @@ pre_pack_universal_template_Win_2020.3:
               -  "com.unity.template-universal/Library/SourceAssetDB"
         logs:
             paths:
-              -  "%LOCALAPPDATA%/Unity/Editor/Editor.log"
-              -  "%USERPROFILE%/AppData/LocalLow/DefaultCompany/ProductName/Player.log"
+              -  "./Editor.log"
+              -  "./Player.log"
 pack_universal_template_Win_2020.3:
     name: Pack Universal Template Win 2020.3
     agent:
