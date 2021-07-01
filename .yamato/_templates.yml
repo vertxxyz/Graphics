@@ -20,7 +20,7 @@ pre_pack_hdrp_template_Win_2020.3:
       -  .Editor\Unity.exe -projectPath com.unity.template-hd -batchmode -quit
     after:
       -  copy "%LOCALAPPDATA%\Unity\Editor\Editor.log" ".\Editor.log"
-      -  copy "%USERPROFILE%\AppData\LocalLow\DefaultCompany\ProductName\Player.log ".\Player.log"
+    #   -  copy "%USERPROFILE%\AppData\LocalLow\DefaultCompany\ProductName\Player.log ".\Player.log"
     dependencies:
       -  .yamato/_editor_priming.yml#editor:priming:2020.3:Win
     artifacts:
@@ -32,7 +32,7 @@ pre_pack_hdrp_template_Win_2020.3:
         logs:
             paths:
               -  "./Editor.log"
-              -  "./Player.log"
+            #   -  "./Player.log"
 pack_hdrp_template_Win_2020.3:
     name: Pack HDRP Template Win 2020.3
     agent:
@@ -319,7 +319,7 @@ pre_pack_universal_template_Win_2020.3:
       -  .Editor\Unity.exe -projectPath com.unity.template-universal -batchmode -quit
     after:
       -  copy "%LOCALAPPDATA%\Unity\Editor\Editor.log" ".\Editor.log"
-      -  copy "%USERPROFILE%\AppData\LocalLow\DefaultCompany\ProductName\Player.log ".\Player.log"
+    #   -  copy "%USERPROFILE%\AppData\LocalLow\DefaultCompany\ProductName\Player.log ".\Player.log"
     dependencies:
       -  .yamato/_editor_priming.yml#editor:priming:2020.3:Win
     artifacts:
@@ -331,7 +331,7 @@ pre_pack_universal_template_Win_2020.3:
         logs:
             paths:
               -  "./Editor.log"
-              -  "./Player.log"
+            #   -  "./Player.log"
 pack_universal_template_Win_2020.3:
     name: Pack Universal Template Win 2020.3
     agent:
