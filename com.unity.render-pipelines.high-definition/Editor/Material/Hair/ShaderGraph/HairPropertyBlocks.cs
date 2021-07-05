@@ -28,7 +28,7 @@ namespace UnityEditor.Rendering.HighDefinition.ShaderGraph
         protected override void CreatePropertyGUI()
         {
             // TODO: Un-hide me when Marschner BSDF is available.
-            // AddProperty(Styles.materialType, () => hairData.materialType, (newValue) => hairData.materialType = newValue);
+            AddProperty(Styles.materialType, () => hairData.materialType, (newValue) => hairData.materialType = newValue);
 
             base.CreatePropertyGUI();
         }
@@ -39,6 +39,7 @@ namespace UnityEditor.Rendering.HighDefinition.ShaderGraph
         class Styles
         {
             public static GUIContent useLightFacingNormal = new GUIContent("Use Light Facing Normal", "TODO");
+            public static GUIContent useRoughenedAzimuthalScattering = new GUIContent("Allow Radial Smoothness", "");
             public static GUIContent scatteringMode = new GUIContent("Scattering Mode", "");
         }
 
@@ -54,7 +55,10 @@ namespace UnityEditor.Rendering.HighDefinition.ShaderGraph
             AddProperty(Styles.useLightFacingNormal, () => hairData.useLightFacingNormal, (newValue) => hairData.useLightFacingNormal = newValue);
 
             if (hairData.materialType == HairData.MaterialType.Marschner)
+            {
+                AddProperty(Styles.useRoughenedAzimuthalScattering, () => hairData.useRoughenedAzimuthalScattering, (newValue) => hairData.useRoughenedAzimuthalScattering = newValue);
                 AddProperty(Styles.scatteringMode, () => hairData.scatteringMode, (newValue) => hairData.scatteringMode = newValue);
+            }
         }
     }
 }
