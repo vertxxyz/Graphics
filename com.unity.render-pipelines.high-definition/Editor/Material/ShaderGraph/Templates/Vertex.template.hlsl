@@ -81,6 +81,17 @@ AttributesMesh ApplyMeshModification(AttributesMesh input, float3 timeParameters
     return input;
 }
 
+#if defined(_ADD_PRECOMPUTED_VELOCITY_SG) // For shader graph custom velocity
+// Return precomputed Velcoity in object space
+float3 GetPrecomputeVelocitySG(AttributesMesh input)
+{
+    // build graph inputs
+    VertexDescriptionInputs vertexDescriptionInputs = AttributesMeshToVertexDescriptionInputs(input);
+    VertexDescription vertexDescription = VertexDescriptionFunction(vertexDescriptionInputs);
+    return vertexDescription.PrecomputedVelocity;
+}
+#endif
+
 FragInputs BuildFragInputs(VaryingsMeshToPS input)
 {
     FragInputs output;
