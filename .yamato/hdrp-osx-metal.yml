@@ -72,16 +72,16 @@ HDRP_OSX_Metal_Standalone_mono_Linear_trunk:
       -  command: ssh -i ~/.ssh/id_rsa_macmini bokken@$BOKKEN_DEVICE_IP '$(python3 -m site --user-base)/bin/unity-downloader-cli --source-file ~/Graphics/unity_revision.txt -c editor -c il2cpp  --wait --published-only'
          retries: 2
       -  command: |5-
-                ssh -i ~/.ssh/id_rsa_macmini bokken@$BOKKEN_DEVICE_IP "export UPM_REGISTRY=https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates; ~/Graphics/utr  $CACHE_ARGS --artifacts_path=/Users/bokken/Graphics/TestProjects/HDRP_RuntimeTests/test-results --editor-location=.Editor --platform=StandaloneOSX --scripting-backend=Mono2x --suite=playmode --testfilter=$TEST_FILTER --testproject=/Users/bokken/Graphics/TestProjects/HDRP_RuntimeTests --timeout=2400 --zero-tests-are-ok=1 "
+                ssh -i ~/.ssh/id_rsa_macmini bokken@$BOKKEN_DEVICE_IP "export UPM_REGISTRY=https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates; ~/Graphics/utr  $CACHE_ARGS --artifacts_path=/Users/bokken/Graphics/TestProjects/HDRP_Tests/test-results --editor-location=.Editor --platform=StandaloneOSX --scripting-backend=Mono2x --suite=playmode --testfilter=$TEST_FILTER --testproject=/Users/bokken/Graphics/TestProjects/HDRP_Tests --timeout=2400 --zero-tests-are-ok=1 "
                 UTR_RESULT=$?
-                mkdir -p TestProjects/HDRP_RuntimeTests/test-results/
-                scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/HDRP_RuntimeTests/test-results/ TestProjects/HDRP_RuntimeTests/test-results/
+                mkdir -p TestProjects/HDRP_Tests/test-results/
+                scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/HDRP_Tests/test-results/ TestProjects/HDRP_Tests/test-results/
                 exit $UTR_RESULT
     artifacts:
         logs:
             paths:
               -  "**/test-results/**"
-              -  "TestProjects/HDRP_RuntimeTests/Logs/*.log"
+              -  "TestProjects/HDRP_Tests/Logs/*.log"
     dependencies:
       -  path: .yamato/_editor_priming.yml#editor:priming:trunk:OSX
          rerun: on_new_revision
@@ -148,16 +148,16 @@ HDRP_OSX_Metal_Standalone_mono_Linear_2021.2:
       -  command: ssh -i ~/.ssh/id_rsa_macmini bokken@$BOKKEN_DEVICE_IP '$(python3 -m site --user-base)/bin/unity-downloader-cli --source-file ~/Graphics/unity_revision.txt -c editor -c il2cpp  --wait --published-only'
          retries: 2
       -  command: |5-
-                ssh -i ~/.ssh/id_rsa_macmini bokken@$BOKKEN_DEVICE_IP "export UPM_REGISTRY=https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates; ~/Graphics/utr  $CACHE_ARGS --artifacts_path=/Users/bokken/Graphics/TestProjects/HDRP_RuntimeTests/test-results --editor-location=.Editor --platform=StandaloneOSX --scripting-backend=Mono2x --suite=playmode --testfilter=$TEST_FILTER --testproject=/Users/bokken/Graphics/TestProjects/HDRP_RuntimeTests --timeout=2400 --zero-tests-are-ok=1 "
+                ssh -i ~/.ssh/id_rsa_macmini bokken@$BOKKEN_DEVICE_IP "export UPM_REGISTRY=https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates; ~/Graphics/utr  $CACHE_ARGS --artifacts_path=/Users/bokken/Graphics/TestProjects/HDRP_Tests/test-results --editor-location=.Editor --platform=StandaloneOSX --scripting-backend=Mono2x --suite=playmode --testfilter=$TEST_FILTER --testproject=/Users/bokken/Graphics/TestProjects/HDRP_Tests --timeout=2400 --zero-tests-are-ok=1 "
                 UTR_RESULT=$?
-                mkdir -p TestProjects/HDRP_RuntimeTests/test-results/
-                scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/HDRP_RuntimeTests/test-results/ TestProjects/HDRP_RuntimeTests/test-results/
+                mkdir -p TestProjects/HDRP_Tests/test-results/
+                scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/HDRP_Tests/test-results/ TestProjects/HDRP_Tests/test-results/
                 exit $UTR_RESULT
     artifacts:
         logs:
             paths:
               -  "**/test-results/**"
-              -  "TestProjects/HDRP_RuntimeTests/Logs/*.log"
+              -  "TestProjects/HDRP_Tests/Logs/*.log"
     dependencies:
       -  path: .yamato/_editor_priming.yml#editor:priming:2021.2:OSX
          rerun: on_new_revision
@@ -224,16 +224,16 @@ HDRP_OSX_Metal_Standalone_mono_Linear_CUSTOM-REVISION:
       -  command: ssh -i ~/.ssh/id_rsa_macmini bokken@$BOKKEN_DEVICE_IP '$(python3 -m site --user-base)/bin/unity-downloader-cli --source-file ~/Graphics/unity_revision.txt -c editor -c il2cpp  --wait --published-only'
          retries: 2
       -  command: |5-
-                ssh -i ~/.ssh/id_rsa_macmini bokken@$BOKKEN_DEVICE_IP "export UPM_REGISTRY=https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates; ~/Graphics/utr  $CACHE_ARGS --artifacts_path=/Users/bokken/Graphics/TestProjects/HDRP_RuntimeTests/test-results --editor-location=.Editor --platform=StandaloneOSX --scripting-backend=Mono2x --suite=playmode --testfilter=$TEST_FILTER --testproject=/Users/bokken/Graphics/TestProjects/HDRP_RuntimeTests --timeout=2400 --zero-tests-are-ok=1 "
+                ssh -i ~/.ssh/id_rsa_macmini bokken@$BOKKEN_DEVICE_IP "export UPM_REGISTRY=https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates; ~/Graphics/utr  $CACHE_ARGS --artifacts_path=/Users/bokken/Graphics/TestProjects/HDRP_Tests/test-results --editor-location=.Editor --platform=StandaloneOSX --scripting-backend=Mono2x --suite=playmode --testfilter=$TEST_FILTER --testproject=/Users/bokken/Graphics/TestProjects/HDRP_Tests --timeout=2400 --zero-tests-are-ok=1 "
                 UTR_RESULT=$?
-                mkdir -p TestProjects/HDRP_RuntimeTests/test-results/
-                scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/HDRP_RuntimeTests/test-results/ TestProjects/HDRP_RuntimeTests/test-results/
+                mkdir -p TestProjects/HDRP_Tests/test-results/
+                scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/HDRP_Tests/test-results/ TestProjects/HDRP_Tests/test-results/
                 exit $UTR_RESULT
     artifacts:
         logs:
             paths:
               -  "**/test-results/**"
-              -  "TestProjects/HDRP_RuntimeTests/Logs/*.log"
+              -  "TestProjects/HDRP_Tests/Logs/*.log"
     dependencies:
       -  path: .yamato/_editor_priming.yml#editor:priming:CUSTOM-REVISION:OSX
          rerun: on_new_revision
