@@ -91,6 +91,10 @@ test_platforms:
       - [iPhone_Metal, Android_Vulkan, Android_OpenGLES3, Win_DX11, Win_DX12, Win_Vulkan, OSX_Metal, Linux_Vulkan]: <shared.platform.commands.call_utr>
         flags:
           - <reuse_blocks.perf_utr_flags>
+    after:
+      - [all]: <shared.platform.commands.log_parser>
+    after_build:
+      - [all]: <shared.platform.commands.log_parser>
 
   - type: playmode
     name: performance_playmode_editor
@@ -106,6 +110,8 @@ test_platforms:
           - [all]: --performance-project-id=VikingVillage_BuiltIn
           - [all]: --testfilter="MemoryAllocation;RuntimeProfilerMetrics"
           - <reuse_blocks.perf_utr_flags>
+    after:
+      - [all]: <shared.platform.commands.log_parser>
   - type: editmode
     name: performance_build_editmode
     allow_cache: False
@@ -120,6 +126,8 @@ test_platforms:
           - [all]: --report-performance-data
           - [all]: --performance-project-id=VikingVillage_BuiltIn
           - <reuse_blocks.perf_utr_flags>
+    after:
+      - [all]: <shared.platform.commands.log_parser>
 
 platforms:
   - name: Win

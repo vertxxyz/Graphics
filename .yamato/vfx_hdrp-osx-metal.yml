@@ -39,6 +39,8 @@ VFX_HDRP_OSX_Metal_Standalone_mono_Linear_trunk:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -77,6 +79,8 @@ VFX_HDRP_OSX_Metal_Standalone_PerformanceTests_mono_Linear_trunk:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -115,6 +119,8 @@ VFX_HDRP_OSX_Metal_playmode_mono_Linear_trunk:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -153,6 +159,8 @@ VFX_HDRP_OSX_Metal_playmode_XR_mono_Linear_trunk:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -191,6 +199,8 @@ VFX_HDRP_OSX_Metal_playmode_PerformanceTests_mono_Linear_trunk:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -229,6 +239,8 @@ VFX_HDRP_OSX_Metal_editmode_PerformanceTests_mono_Linear_trunk:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -267,6 +279,8 @@ VFX_HDRP_OSX_Metal_Standalone_mono_Linear_2021.2:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -305,6 +319,8 @@ VFX_HDRP_OSX_Metal_Standalone_PerformanceTests_mono_Linear_2021.2:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -343,6 +359,8 @@ VFX_HDRP_OSX_Metal_playmode_mono_Linear_2021.2:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -381,6 +399,8 @@ VFX_HDRP_OSX_Metal_playmode_XR_mono_Linear_2021.2:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -419,6 +439,8 @@ VFX_HDRP_OSX_Metal_playmode_PerformanceTests_mono_Linear_2021.2:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -457,6 +479,8 @@ VFX_HDRP_OSX_Metal_editmode_PerformanceTests_mono_Linear_2021.2:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -495,6 +519,8 @@ VFX_HDRP_OSX_Metal_Standalone_mono_Linear_CUSTOM-REVISION:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -533,6 +559,8 @@ VFX_HDRP_OSX_Metal_Standalone_PerformanceTests_mono_Linear_CUSTOM-REVISION:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -571,6 +599,8 @@ VFX_HDRP_OSX_Metal_playmode_mono_Linear_CUSTOM-REVISION:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -609,6 +639,8 @@ VFX_HDRP_OSX_Metal_playmode_XR_mono_Linear_CUSTOM-REVISION:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -647,6 +679,8 @@ VFX_HDRP_OSX_Metal_playmode_PerformanceTests_mono_Linear_CUSTOM-REVISION:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -685,6 +719,8 @@ VFX_HDRP_OSX_Metal_editmode_PerformanceTests_mono_Linear_CUSTOM-REVISION:
                 mkdir -p TestProjects/VisualEffectGraph_HDRP/test-results/
                 scp -i ~/.ssh/id_rsa_macmini -r bokken@$BOKKEN_DEVICE_IP:/Users/bokken/Graphics/TestProjects/VisualEffectGraph_HDRP/test-results/ TestProjects/VisualEffectGraph_HDRP/test-results/
                 exit $UTR_RESULT
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:

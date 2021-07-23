@@ -94,6 +94,10 @@ test_platforms:
           - <reuse_blocks.perf_utr_flags>
           - [all]: --testfilter=Medium
           - [all]: --player-save-path=playersMedium
+    after:
+      - [all]: <shared.platform.commands.log_parser>
+    after_build:
+      - [all]: <shared.platform.commands.log_parser>
 
   - type: playmode
     name: performance_playmode_editor
@@ -109,6 +113,8 @@ test_platforms:
           - [all]: --performance-project-id=VikingVillage_URP
           - <reuse_blocks.perf_utr_flags>
           - [all]: --testfilter=Medium
+    after:
+      - [all]: <shared.platform.commands.log_parser>
   - type: editmode
     name: performance_build_editmode
     allow_cache: False
@@ -124,6 +130,8 @@ test_platforms:
           - [all]: --performance-project-id=VikingVillage_URP
           - <reuse_blocks.perf_utr_flags>
           - [all]: --testfilter=Medium
+    after:
+      - [all]: <shared.platform.commands.log_parser>
 
 platforms:
   - name: Win

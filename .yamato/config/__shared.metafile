@@ -146,6 +146,10 @@ test_platforms:
       - [all]: <shared.platform.commands.setup_utr>
       - [all]: <shared.platform.commands.unity_downloader_cli>
       - [all]: <shared.platform.commands.call_utr>
+    after:
+      - [all]: <shared.platform.commands.log_parser>
+    after_build:
+      - [all]: <shared.platform.commands.log_parser>
   - type: playmode
     allow_cache: True
     utr_flags:
@@ -176,6 +180,8 @@ test_platforms:
       - [all]: <shared.platform.commands.setup_utr>
       - [all]: <shared.platform.commands.unity_downloader_cli>
       - [all]: <shared.platform.commands.call_utr>
+    after:
+      - [all]: <shared.platform.commands.log_parser>
 
   - type: editmode
     allow_cache: False
@@ -216,6 +222,8 @@ test_platforms:
       - [all]: <shared.platform.commands.setup_utr>
       - [all]: <shared.platform.commands.unity_downloader_cli>
       - [all]: <shared.platform.commands.call_utr>
+    after:
+      - [all]: <shared.platform.commands.log_parser>
 
 platforms:
   Win:
@@ -271,6 +279,8 @@ platforms:
             retries: 2
         turn_off_firewall:
           - command: NetSh Advfirewall set allprofiles state off
+        log_parser:
+          - command: python3 .yamato/script/log_scripts/log_parser.py
 
   OSX:
     name: OSX
@@ -323,6 +333,8 @@ platforms:
             retries: 2
           - command: ssh -i ~/.ssh/id_rsa_macmini bokken@$BOKKEN_DEVICE_IP '$(python3 -m site --user-base)/bin/unity-downloader-cli <EDITOR_REVISION_CMD> -c editor -c il2cpp  --wait --published-only'
             retries: 2
+        log_parser:
+          - command: python3 .yamato/script/log_scripts/log_parser.py
       [OpenGlCore]:
         setup_utr:
           - command: curl -s https://artifactory.prd.it.unity3d.com/artifactory/unity-tools-local/utr-standalone/utr --output utr
@@ -340,6 +352,8 @@ platforms:
             retries: 2
           - command: unity-downloader-cli <EDITOR_REVISION_CMD> -c editor -c il2cpp  --wait --published-only
             retries: 2
+        log_parser:
+          - command: python3 .yamato/script/log_scripts/log_parser.py
 
 
   Linux:
@@ -380,7 +394,8 @@ platforms:
             retries: 2
           - command: sudo unity-downloader-cli <EDITOR_REVISION_CMD> -c editor -c il2cpp  --wait --published-only
             retries: 2
-
+        log_parser:
+          - command: python3 .yamato/script/log_scripts/log_parser.py
 
   Android:
     name: Android
@@ -428,6 +443,8 @@ platforms:
         kill_server:
           - command: start %ANDROID_SDK_ROOT%\platform-tools\adb.exe kill-server
             retries: 2
+        log_parser:
+          - command: python3 .yamato/script/log_scripts/log_parser.py
 
 
   XRQuest:
@@ -480,6 +497,8 @@ platforms:
         kill_server:
           - command: start %ANDROID_SDK_ROOT%\platform-tools\adb.exe kill-server
             retries: 2
+        log_parser:
+          - command: python3 .yamato/script/log_scripts/log_parser.py
 
   iPhone:
     name: iPhone
@@ -516,6 +535,8 @@ platforms:
             retries: 2
           - command: unity-downloader-cli <EDITOR_REVISION_CMD> -c editor -c iOS -c il2cpp  --wait --published-only
             retries: 2
+        log_parser:
+          - command: python3 .yamato/script/log_scripts/log_parser.py
 non_project_agents:
   package_ci_ubuntu_large:
     type: Unity::VM

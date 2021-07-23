@@ -137,6 +137,10 @@ test_platforms:
           - [Win_DX11, Win_DX12, Win_Vulkan]: --extra-editor-arg="-allowdebugging-"
           - [all]: --testfilter=High
           - [all]: --player-save-path=playersHigh
+    after:
+      - [all]: <shared.platform.commands.log_parser>
+    after_build:
+      - [all]: <shared.platform.commands.log_parser>
 
   - type: playmode
     name: performance_playmode_editor
@@ -164,6 +168,9 @@ test_platforms:
           - [all]: --performance-project-id=BoatAttack
           - <reuse_blocks.perf_utr_flags>
           - [all]: --testfilter=High
+    after:
+      - [all]: <shared.platform.commands.log_parser>
+
   - type: editmode
     name: performance_build_editmode
     allow_cache: False
@@ -193,6 +200,8 @@ test_platforms:
           - [all]: --performance-project-id=BoatAttack
           - <reuse_blocks.perf_utr_flags>
           - [all]: --testfilter=High
+    after:
+      - [all]: <shared.platform.commands.log_parser>
 
 platforms:
   - name: Win

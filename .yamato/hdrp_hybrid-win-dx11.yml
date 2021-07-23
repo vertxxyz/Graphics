@@ -36,6 +36,8 @@ HDRP_Hybrid_Win_DX11_playmode_mono_Linear_trunk:
                 echo %GIT_REVISIONDATE%
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_HybridTests/test-results --compilation-errors-as-warnings --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-d3d11" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_HybridTests --zero-tests-are-ok=1
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -71,6 +73,8 @@ HDRP_Hybrid_Win_DX11_playmode_XR_mono_Linear_trunk:
                 echo %GIT_REVISIONDATE%
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_HybridTests/test-results --compilation-errors-as-warnings --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-d3d11" --extra-editor-arg="-xr-reuse-tests" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_HybridTests --zero-tests-are-ok=1
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -102,6 +106,8 @@ HDRP_Hybrid_Win_DX11_Standalone_mono_Linear_trunk:
                 echo %GIT_REVISIONDATE%
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_HybridTests/test-results --compilation-errors-as-warnings --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -138,6 +144,8 @@ Build_HDRP_Hybrid_Win_DX11_Standalone_mono_Linear_trunk:
                 echo %GIT_REVISIONDATE%
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_HybridTests/test-results --build-only --compilation-errors-as-warnings --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="d3d11" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Direct3D11" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_HybridTests --timeout=1200
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -176,6 +184,8 @@ HDRP_Hybrid_Win_DX11_playmode_mono_Linear_2021.2:
                 echo %GIT_REVISIONDATE%
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_HybridTests/test-results --compilation-errors-as-warnings --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-d3d11" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_HybridTests --zero-tests-are-ok=1
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -211,6 +221,8 @@ HDRP_Hybrid_Win_DX11_playmode_XR_mono_Linear_2021.2:
                 echo %GIT_REVISIONDATE%
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_HybridTests/test-results --compilation-errors-as-warnings --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-d3d11" --extra-editor-arg="-xr-reuse-tests" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_HybridTests --zero-tests-are-ok=1
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -242,6 +254,8 @@ HDRP_Hybrid_Win_DX11_Standalone_mono_Linear_2021.2:
                 echo %GIT_REVISIONDATE%
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_HybridTests/test-results --compilation-errors-as-warnings --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -278,6 +292,8 @@ Build_HDRP_Hybrid_Win_DX11_Standalone_mono_Linear_2021.2:
                 echo %GIT_REVISIONDATE%
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_HybridTests/test-results --build-only --compilation-errors-as-warnings --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="d3d11" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Direct3D11" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_HybridTests --timeout=1200
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -316,6 +332,8 @@ HDRP_Hybrid_Win_DX11_playmode_mono_Linear_CUSTOM-REVISION:
                 echo %GIT_REVISIONDATE%
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_HybridTests/test-results --compilation-errors-as-warnings --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-d3d11" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_HybridTests --zero-tests-are-ok=1
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -351,6 +369,8 @@ HDRP_Hybrid_Win_DX11_playmode_XR_mono_Linear_CUSTOM-REVISION:
                 echo %GIT_REVISIONDATE%
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_HybridTests/test-results --compilation-errors-as-warnings --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-d3d11" --extra-editor-arg="-xr-reuse-tests" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_HybridTests --zero-tests-are-ok=1
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -382,6 +402,8 @@ HDRP_Hybrid_Win_DX11_Standalone_mono_Linear_CUSTOM-REVISION:
                 echo %GIT_REVISIONDATE%
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_HybridTests/test-results --compilation-errors-as-warnings --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -418,6 +440,8 @@ Build_HDRP_Hybrid_Win_DX11_Standalone_mono_Linear_CUSTOM-REVISION:
                 echo %GIT_REVISIONDATE%
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_HybridTests/test-results --build-only --compilation-errors-as-warnings --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="d3d11" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Direct3D11" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_HybridTests --timeout=1200
+    after:
+      -  command: python3 .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:

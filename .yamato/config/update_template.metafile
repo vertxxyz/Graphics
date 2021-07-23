@@ -29,9 +29,13 @@ test_platforms:
   - type: playmode
     commands:
       - <reuse_blocks.setup_with_utr>
+    after:
+      - [all]: <shared.platform.commands.log_parser>
   - type: editmode
     commands:
       - <reuse_blocks.setup_with_utr>
+    after:
+      - [all]: <shared.platform.commands.log_parser>
 
 platforms:
   - name: Win
