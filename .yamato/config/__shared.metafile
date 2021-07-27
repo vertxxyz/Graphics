@@ -235,15 +235,15 @@ platforms:
     agents_project:
       default:
         type: Unity::VM::GPU
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.large
       standalone_build:
         type: Unity::VM
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
       editmode:
         type: Unity::VM
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.large
     agent_package:
       type: Unity::VM
@@ -369,11 +369,11 @@ platforms:
         flavor: b1.large
       editmode:
         type: Unity::VM
-        image: package-ci/ubuntu:stable
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
       standalone_build:
         type: Unity::VM
-        image: package-ci/ubuntu:stable
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.xlarge
     commands:
       [OpenGlCore, Vulkan]:
