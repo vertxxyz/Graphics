@@ -365,7 +365,7 @@ platforms:
     agents_project:
       default:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:stable
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
       editmode:
         type: Unity::VM
