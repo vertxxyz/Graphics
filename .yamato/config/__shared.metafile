@@ -291,12 +291,12 @@ platforms:
     agents_project_Metal:
       default:
         type: Unity::metal::macmini
-        image: slough-ops/macos-10.14-xcode:stable
+        image: graphics-foundation/gfx-mac:latest
         flavor: m1.mac
     agents_project_OpenGLCore:
       default:
         type: Unity::VM::osx
-        image: graphics-foundation/mac-10.15:latest
+        image: graphics-foundation/gfx-mac:latest
         flavor: m1.mac
     agent_package:
       type: Unity::VM::osx
