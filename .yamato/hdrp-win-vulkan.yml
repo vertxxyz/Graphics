@@ -13,7 +13,7 @@ HDRP_Win_Vulkan_playmode_mono_Linear_trunk:
     name: HDRP on Win_Vulkan_playmode_mono_Linear on version trunk
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -37,7 +37,7 @@ HDRP_Win_Vulkan_playmode_mono_Linear_trunk:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-vulkan" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -50,7 +50,7 @@ HDRP_Win_Vulkan_playmode_XR_mono_Linear_trunk:
     name: HDRP on Win_Vulkan_playmode_XR_mono_Linear on version trunk
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -74,7 +74,7 @@ HDRP_Win_Vulkan_playmode_XR_mono_Linear_trunk:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-vulkan" --extra-editor-arg="-xr-reuse-tests" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -87,7 +87,7 @@ HDRP_Win_Vulkan_editmode_mono_Linear_trunk:
     name: HDRP on Win_Vulkan_editmode_mono_Linear on version trunk
     agent:
         type: Unity::VM
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -110,7 +110,7 @@ HDRP_Win_Vulkan_editmode_mono_Linear_trunk:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-vulkan" --extra-editor-arg="-playergraphicsapi=Vulkan" --platform=editmode --scripting-backend=Mono2x --suite=editor --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -123,7 +123,7 @@ HDRP_Win_Vulkan_editmode_XR_mono_Linear_trunk:
     name: HDRP on Win_Vulkan_editmode_XR_mono_Linear on version trunk
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -147,7 +147,7 @@ HDRP_Win_Vulkan_editmode_XR_mono_Linear_trunk:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-vulkan" --extra-editor-arg="-playergraphicsapi=Vulkan" --extra-editor-arg="-xr-reuse-tests" --platform=editmode --scripting-backend=Mono2x --suite=editor --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -160,7 +160,7 @@ HDRP_Win_Vulkan_Standalone_mono_Linear_trunk:
     name: HDRP on Win_Vulkan_Standalone_mono_Linear on version trunk
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -180,7 +180,7 @@ HDRP_Win_Vulkan_Standalone_mono_Linear_trunk:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -195,7 +195,7 @@ Build_HDRP_Win_Vulkan_Standalone_mono_Linear_trunk:
     name: Build HDRP on Win_Vulkan_mono_Linear_Standalone_build_Player on version trunk
     agent:
         type: Unity::VM
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -218,7 +218,7 @@ Build_HDRP_Win_Vulkan_Standalone_mono_Linear_trunk:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="vulkan" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Vulkan" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_RuntimeTests --timeout=1200
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -234,7 +234,7 @@ HDRP_Win_Vulkan_Standalone_XR_mono_Linear_trunk:
     name: HDRP on Win_Vulkan_Standalone_XR_mono_Linear on version trunk
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -255,7 +255,7 @@ HDRP_Win_Vulkan_Standalone_XR_mono_Linear_trunk:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --extra-editor-arg="-xr-reuse-tests" --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -270,7 +270,7 @@ Build_HDRP_Win_Vulkan_Standalone_XR_mono_Linear_trunk:
     name: Build HDRP on Win_Vulkan_mono_Linear_Standalone_XR_build_Player on version trunk
     agent:
         type: Unity::VM
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -293,7 +293,7 @@ Build_HDRP_Win_Vulkan_Standalone_XR_mono_Linear_trunk:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="vulkan" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Vulkan" --extra-editor-arg="-xr-reuse-tests" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_RuntimeTests --timeout=6000
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -309,7 +309,7 @@ HDRP_Win_Vulkan_playmode_mono_Linear_2021.2:
     name: HDRP on Win_Vulkan_playmode_mono_Linear on version 2021.2
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -333,7 +333,7 @@ HDRP_Win_Vulkan_playmode_mono_Linear_2021.2:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-vulkan" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -346,7 +346,7 @@ HDRP_Win_Vulkan_playmode_XR_mono_Linear_2021.2:
     name: HDRP on Win_Vulkan_playmode_XR_mono_Linear on version 2021.2
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -370,7 +370,7 @@ HDRP_Win_Vulkan_playmode_XR_mono_Linear_2021.2:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-vulkan" --extra-editor-arg="-xr-reuse-tests" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -383,7 +383,7 @@ HDRP_Win_Vulkan_editmode_mono_Linear_2021.2:
     name: HDRP on Win_Vulkan_editmode_mono_Linear on version 2021.2
     agent:
         type: Unity::VM
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -406,7 +406,7 @@ HDRP_Win_Vulkan_editmode_mono_Linear_2021.2:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-vulkan" --extra-editor-arg="-playergraphicsapi=Vulkan" --platform=editmode --scripting-backend=Mono2x --suite=editor --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -419,7 +419,7 @@ HDRP_Win_Vulkan_editmode_XR_mono_Linear_2021.2:
     name: HDRP on Win_Vulkan_editmode_XR_mono_Linear on version 2021.2
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -443,7 +443,7 @@ HDRP_Win_Vulkan_editmode_XR_mono_Linear_2021.2:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-vulkan" --extra-editor-arg="-playergraphicsapi=Vulkan" --extra-editor-arg="-xr-reuse-tests" --platform=editmode --scripting-backend=Mono2x --suite=editor --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -456,7 +456,7 @@ HDRP_Win_Vulkan_Standalone_mono_Linear_2021.2:
     name: HDRP on Win_Vulkan_Standalone_mono_Linear on version 2021.2
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -476,7 +476,7 @@ HDRP_Win_Vulkan_Standalone_mono_Linear_2021.2:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -491,7 +491,7 @@ Build_HDRP_Win_Vulkan_Standalone_mono_Linear_2021.2:
     name: Build HDRP on Win_Vulkan_mono_Linear_Standalone_build_Player on version 2021.2
     agent:
         type: Unity::VM
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -514,7 +514,7 @@ Build_HDRP_Win_Vulkan_Standalone_mono_Linear_2021.2:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="vulkan" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Vulkan" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_RuntimeTests --timeout=1200
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -530,7 +530,7 @@ HDRP_Win_Vulkan_Standalone_XR_mono_Linear_2021.2:
     name: HDRP on Win_Vulkan_Standalone_XR_mono_Linear on version 2021.2
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -551,7 +551,7 @@ HDRP_Win_Vulkan_Standalone_XR_mono_Linear_2021.2:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --extra-editor-arg="-xr-reuse-tests" --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -566,7 +566,7 @@ Build_HDRP_Win_Vulkan_Standalone_XR_mono_Linear_2021.2:
     name: Build HDRP on Win_Vulkan_mono_Linear_Standalone_XR_build_Player on version 2021.2
     agent:
         type: Unity::VM
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -589,7 +589,7 @@ Build_HDRP_Win_Vulkan_Standalone_XR_mono_Linear_2021.2:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="vulkan" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Vulkan" --extra-editor-arg="-xr-reuse-tests" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_RuntimeTests --timeout=6000
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -605,7 +605,7 @@ HDRP_Win_Vulkan_playmode_mono_Linear_CUSTOM-REVISION:
     name: HDRP on Win_Vulkan_playmode_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -629,7 +629,7 @@ HDRP_Win_Vulkan_playmode_mono_Linear_CUSTOM-REVISION:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-vulkan" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -642,7 +642,7 @@ HDRP_Win_Vulkan_playmode_XR_mono_Linear_CUSTOM-REVISION:
     name: HDRP on Win_Vulkan_playmode_XR_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -666,7 +666,7 @@ HDRP_Win_Vulkan_playmode_XR_mono_Linear_CUSTOM-REVISION:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-vulkan" --extra-editor-arg="-xr-reuse-tests" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -679,7 +679,7 @@ HDRP_Win_Vulkan_editmode_mono_Linear_CUSTOM-REVISION:
     name: HDRP on Win_Vulkan_editmode_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -702,7 +702,7 @@ HDRP_Win_Vulkan_editmode_mono_Linear_CUSTOM-REVISION:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-vulkan" --extra-editor-arg="-playergraphicsapi=Vulkan" --platform=editmode --scripting-backend=Mono2x --suite=editor --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -715,7 +715,7 @@ HDRP_Win_Vulkan_editmode_XR_mono_Linear_CUSTOM-REVISION:
     name: HDRP on Win_Vulkan_editmode_XR_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -739,7 +739,7 @@ HDRP_Win_Vulkan_editmode_XR_mono_Linear_CUSTOM-REVISION:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-vulkan" --extra-editor-arg="-playergraphicsapi=Vulkan" --extra-editor-arg="-xr-reuse-tests" --platform=editmode --scripting-backend=Mono2x --suite=editor --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -752,7 +752,7 @@ HDRP_Win_Vulkan_Standalone_mono_Linear_CUSTOM-REVISION:
     name: HDRP on Win_Vulkan_Standalone_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -772,7 +772,7 @@ HDRP_Win_Vulkan_Standalone_mono_Linear_CUSTOM-REVISION:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -787,7 +787,7 @@ Build_HDRP_Win_Vulkan_Standalone_mono_Linear_CUSTOM-REVISION:
     name: Build HDRP on Win_Vulkan_mono_Linear_Standalone_build_Player on version CUSTOM-REVISION
     agent:
         type: Unity::VM
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -810,7 +810,7 @@ Build_HDRP_Win_Vulkan_Standalone_mono_Linear_CUSTOM-REVISION:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="vulkan" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Vulkan" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_RuntimeTests --timeout=1200
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -826,7 +826,7 @@ HDRP_Win_Vulkan_Standalone_XR_mono_Linear_CUSTOM-REVISION:
     name: HDRP on Win_Vulkan_Standalone_XR_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM::GPU
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -847,7 +847,7 @@ HDRP_Win_Vulkan_Standalone_XR_mono_Linear_CUSTOM-REVISION:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --extra-editor-arg="-xr-reuse-tests" --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -862,7 +862,7 @@ Build_HDRP_Win_Vulkan_Standalone_XR_mono_Linear_CUSTOM-REVISION:
     name: Build HDRP on Win_Vulkan_mono_Linear_Standalone_XR_build_Player on version CUSTOM-REVISION
     agent:
         type: Unity::VM
-        image: graphics-foundation/win10-dxr:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -885,7 +885,7 @@ Build_HDRP_Win_Vulkan_Standalone_XR_mono_Linear_CUSTOM-REVISION:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_RuntimeTests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="vulkan" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Vulkan" --extra-editor-arg="-xr-reuse-tests" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_RuntimeTests --timeout=6000
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:

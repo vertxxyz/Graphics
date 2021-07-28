@@ -33,7 +33,7 @@ HDRP_DXR_Win_DX12_Standalone_mono_Linear_trunk:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_DXR_Tests/test-results --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -72,7 +72,7 @@ Build_HDRP_DXR_Win_DX12_Standalone_mono_Linear_trunk:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_DXR_Tests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="d3d12" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Direct3D12" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_DXR_Tests --timeout=1200
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -112,7 +112,7 @@ HDRP_DXR_Win_DX12_playmode_mono_Linear_trunk:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_DXR_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-d3d12" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_DXR_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -149,7 +149,7 @@ HDRP_DXR_Win_DX12_playmode_XR_mono_Linear_trunk:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_DXR_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-d3d12" --extra-editor-arg="-xr-reuse-tests" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_DXR_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -182,7 +182,7 @@ HDRP_DXR_Win_DX12_Standalone_mono_Linear_2021.2:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_DXR_Tests/test-results --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -221,7 +221,7 @@ Build_HDRP_DXR_Win_DX12_Standalone_mono_Linear_2021.2:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_DXR_Tests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="d3d12" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Direct3D12" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_DXR_Tests --timeout=1200
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -261,7 +261,7 @@ HDRP_DXR_Win_DX12_playmode_mono_Linear_2021.2:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_DXR_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-d3d12" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_DXR_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -298,7 +298,7 @@ HDRP_DXR_Win_DX12_playmode_XR_mono_Linear_2021.2:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_DXR_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-d3d12" --extra-editor-arg="-xr-reuse-tests" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_DXR_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -331,7 +331,7 @@ HDRP_DXR_Win_DX12_Standalone_mono_Linear_CUSTOM-REVISION:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/HDRP_DXR_Tests/test-results --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -370,7 +370,7 @@ Build_HDRP_DXR_Win_DX12_Standalone_mono_Linear_CUSTOM-REVISION:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_DXR_Tests/test-results --build-only --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="SetupProject.ApplySettings" --extra-editor-arg="d3d12" --extra-editor-arg="Linear" --extra-editor-arg="-playergraphicsapi=Direct3D12" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_DXR_Tests --timeout=1200
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -410,7 +410,7 @@ HDRP_DXR_Win_DX12_playmode_mono_Linear_CUSTOM-REVISION:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_DXR_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-d3d12" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_DXR_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -447,7 +447,7 @@ HDRP_DXR_Win_DX12_playmode_XR_mono_Linear_CUSTOM-REVISION:
                 del revdate.tmp
                 utr %CACHE_ARGS% --artifacts_path=TestProjects/HDRP_DXR_Tests/test-results --editor-location=.Editor --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-force-d3d12" --extra-editor-arg="-xr-reuse-tests" --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/HDRP_DXR_Tests --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:

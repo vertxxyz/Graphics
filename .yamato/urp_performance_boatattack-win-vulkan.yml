@@ -47,7 +47,7 @@ URP_Performance_BoatAttack_Win_Vulkan_performance_playmode_runtime_mono_Linear_t
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/BoatAttack/test-results --performance-project-id=BoatAttack --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=playersHigh --report-performance-data --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -122,7 +122,7 @@ Build_URP_Performance_BoatAttack_Win_Vulkan_performance_playmode_runtime_mono_Li
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/BoatAttack/test-results --build-only --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/scenes/Testing/benchmark_island-static.unity" --extra-editor-arg="-allowdebugging-" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-managedstrippinglevel=Low" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-playergraphicsapi=Vulkan" --extra-editor-arg="-scriptingbackend=Mono2x" --extra-editor-arg="-stripenginecode-" --platform=StandaloneWindows64 --player-save-path=playersHigh --scripting-backend=Mono2x --suite=playmode --testfilter=High --testproject=./TestProjects/BoatAttack --timeout=1200
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -198,7 +198,7 @@ URP_Performance_BoatAttack_Win_Vulkan_performance_build_editmode_mono_Linear_tru
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/BoatAttack/test-results --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/scenes/Testing/benchmark_island-static.unity" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-force-vulkan" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-playergraphicsapi=Vulkan" --extra-editor-arg="-scriptingbackend=Mono2x" --performance-project-id=BoatAttack --platform=editmode --report-performance-data --scripting-backend=Mono2x --suite=editor --testfilter=High --testproject=./TestProjects/BoatAttack --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -245,7 +245,7 @@ URP_Performance_BoatAttack_Win_Vulkan_performance_playmode_runtime_mono_Linear_2
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/BoatAttack/test-results --performance-project-id=BoatAttack --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=playersHigh --report-performance-data --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -320,7 +320,7 @@ Build_URP_Performance_BoatAttack_Win_Vulkan_performance_playmode_runtime_mono_Li
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/BoatAttack/test-results --build-only --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/scenes/Testing/benchmark_island-static.unity" --extra-editor-arg="-allowdebugging-" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-managedstrippinglevel=Low" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-playergraphicsapi=Vulkan" --extra-editor-arg="-scriptingbackend=Mono2x" --extra-editor-arg="-stripenginecode-" --platform=StandaloneWindows64 --player-save-path=playersHigh --scripting-backend=Mono2x --suite=playmode --testfilter=High --testproject=./TestProjects/BoatAttack --timeout=1200
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -396,7 +396,7 @@ URP_Performance_BoatAttack_Win_Vulkan_performance_build_editmode_mono_Linear_202
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/BoatAttack/test-results --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/scenes/Testing/benchmark_island-static.unity" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-force-vulkan" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-playergraphicsapi=Vulkan" --extra-editor-arg="-scriptingbackend=Mono2x" --performance-project-id=BoatAttack --platform=editmode --report-performance-data --scripting-backend=Mono2x --suite=editor --testfilter=High --testproject=./TestProjects/BoatAttack --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -443,7 +443,7 @@ URP_Performance_BoatAttack_Win_Vulkan_performance_playmode_runtime_mono_Linear_C
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/BoatAttack/test-results --performance-project-id=BoatAttack --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=playersHigh --report-performance-data --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -518,7 +518,7 @@ Build_URP_Performance_BoatAttack_Win_Vulkan_performance_playmode_runtime_mono_Li
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/BoatAttack/test-results --build-only --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/scenes/Testing/benchmark_island-static.unity" --extra-editor-arg="-allowdebugging-" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-managedstrippinglevel=Low" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-playergraphicsapi=Vulkan" --extra-editor-arg="-scriptingbackend=Mono2x" --extra-editor-arg="-stripenginecode-" --platform=StandaloneWindows64 --player-save-path=playersHigh --scripting-backend=Mono2x --suite=playmode --testfilter=High --testproject=./TestProjects/BoatAttack --timeout=1200
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -594,7 +594,7 @@ URP_Performance_BoatAttack_Win_Vulkan_performance_build_editmode_mono_Linear_CUS
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/BoatAttack/test-results --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/scenes/Testing/benchmark_island-static.unity" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-force-vulkan" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-playergraphicsapi=Vulkan" --extra-editor-arg="-scriptingbackend=Mono2x" --performance-project-id=BoatAttack --platform=editmode --report-performance-data --scripting-backend=Mono2x --suite=editor --testfilter=High --testproject=./TestProjects/BoatAttack --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:

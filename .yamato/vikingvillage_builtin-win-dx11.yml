@@ -35,7 +35,7 @@ VikingVillage_BuiltIn_Win_DX11_performance_playmode_runtime_mono_Linear_trunk:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/Viking-Village-Perf/test-results --performance-project-id=VikingVillage_BuiltIn --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --report-performance-data --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -96,7 +96,7 @@ Build_VikingVillage_BuiltIn_Win_DX11_performance_playmode_runtime_mono_Linear_tr
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/Viking-Village-Perf/test-results --build-only --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/Scenes/The_Viking_Village.unity" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-playergraphicsapi=Direct3D11" --extra-editor-arg="-scriptingbackend=Mono2x" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/Viking-Village-Perf --timeout=1200
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -159,7 +159,7 @@ VikingVillage_BuiltIn_Win_DX11_performance_playmode_editor_mono_Linear_trunk:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/Viking-Village-Perf/test-results --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/Scenes/The_Viking_Village.unity" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-force-d3d11" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-scriptingbackend=Mono2x" --performance-project-id=VikingVillage_BuiltIn --report-performance-data --scripting-backend=Mono2x --suite=playmode --testfilter="MemoryAllocation;RuntimeProfilerMetrics" --testproject=./TestProjects/Viking-Village-Perf --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -218,7 +218,7 @@ VikingVillage_BuiltIn_Win_DX11_performance_build_editmode_mono_Linear_trunk:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/Viking-Village-Perf/test-results --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/Scenes/The_Viking_Village.unity" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-force-d3d11" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-playergraphicsapi=Direct3D11" --extra-editor-arg="-scriptingbackend=Mono2x" --performance-project-id=VikingVillage_BuiltIn --platform=editmode --report-performance-data --scripting-backend=Mono2x --suite=editor --testfilter=Build --testproject=./TestProjects/Viking-Village-Perf --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -253,7 +253,7 @@ VikingVillage_BuiltIn_Win_DX11_performance_playmode_runtime_mono_Linear_2021.2:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/Viking-Village-Perf/test-results --performance-project-id=VikingVillage_BuiltIn --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --report-performance-data --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -314,7 +314,7 @@ Build_VikingVillage_BuiltIn_Win_DX11_performance_playmode_runtime_mono_Linear_20
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/Viking-Village-Perf/test-results --build-only --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/Scenes/The_Viking_Village.unity" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-playergraphicsapi=Direct3D11" --extra-editor-arg="-scriptingbackend=Mono2x" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/Viking-Village-Perf --timeout=1200
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -377,7 +377,7 @@ VikingVillage_BuiltIn_Win_DX11_performance_playmode_editor_mono_Linear_2021.2:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/Viking-Village-Perf/test-results --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/Scenes/The_Viking_Village.unity" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-force-d3d11" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-scriptingbackend=Mono2x" --performance-project-id=VikingVillage_BuiltIn --report-performance-data --scripting-backend=Mono2x --suite=playmode --testfilter="MemoryAllocation;RuntimeProfilerMetrics" --testproject=./TestProjects/Viking-Village-Perf --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -436,7 +436,7 @@ VikingVillage_BuiltIn_Win_DX11_performance_build_editmode_mono_Linear_2021.2:
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/Viking-Village-Perf/test-results --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/Scenes/The_Viking_Village.unity" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-force-d3d11" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-playergraphicsapi=Direct3D11" --extra-editor-arg="-scriptingbackend=Mono2x" --performance-project-id=VikingVillage_BuiltIn --platform=editmode --report-performance-data --scripting-backend=Mono2x --suite=editor --testfilter=Build --testproject=./TestProjects/Viking-Village-Perf --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -471,7 +471,7 @@ VikingVillage_BuiltIn_Win_DX11_performance_playmode_runtime_mono_Linear_CUSTOM-R
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/Viking-Village-Perf/test-results --performance-project-id=VikingVillage_BuiltIn --platform=StandaloneWindows64 --player-connection-ip=auto --player-load-path=players --report-performance-data --suite=playmode --timeout=1200 --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -532,7 +532,7 @@ Build_VikingVillage_BuiltIn_Win_DX11_performance_playmode_runtime_mono_Linear_CU
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/Viking-Village-Perf/test-results --build-only --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/Scenes/The_Viking_Village.unity" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-playergraphicsapi=Direct3D11" --extra-editor-arg="-scriptingbackend=Mono2x" --platform=StandaloneWindows64 --player-save-path=players --scripting-backend=Mono2x --suite=playmode --testfilter=%TEST_FILTER% --testproject=./TestProjects/Viking-Village-Perf --timeout=1200
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -595,7 +595,7 @@ VikingVillage_BuiltIn_Win_DX11_performance_playmode_editor_mono_Linear_CUSTOM-RE
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/Viking-Village-Perf/test-results --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/Scenes/The_Viking_Village.unity" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-force-d3d11" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-scriptingbackend=Mono2x" --performance-project-id=VikingVillage_BuiltIn --report-performance-data --scripting-backend=Mono2x --suite=playmode --testfilter="MemoryAllocation;RuntimeProfilerMetrics" --testproject=./TestProjects/Viking-Village-Perf --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:
@@ -654,7 +654,7 @@ VikingVillage_BuiltIn_Win_DX11_performance_build_editmode_mono_Linear_CUSTOM-REV
                 del revdate.tmp
                 utr --artifacts_path=TestProjects/Viking-Village-Perf/test-results --category=URP --editor-location=.Editor --extra-editor-arg="-addscenetobuild=Assets/Scenes/The_Viking_Village.unity" --extra-editor-arg="-colorspace=Linear" --extra-editor-arg="-executemethod" --extra-editor-arg="Editor.Setup" --extra-editor-arg="-force-d3d11" --extra-editor-arg="-packageundertestbranch=%GIT_BRANCH%" --extra-editor-arg="-packageundertestname=com.unity.render-pipelines.universal" --extra-editor-arg="-packageundertestrev=%GIT_REVISION%" --extra-editor-arg="-packageundertestrevdate=%GIT_REVISIONDATE%" --extra-editor-arg="-playergraphicsapi=Direct3D11" --extra-editor-arg="-scriptingbackend=Mono2x" --performance-project-id=VikingVillage_BuiltIn --platform=editmode --report-performance-data --scripting-backend=Mono2x --suite=editor --testfilter=Build --testproject=./TestProjects/Viking-Village-Perf --zero-tests-are-ok=1
     after:
-      -  command: python3 .yamato/script/log_scripts/log_parser.py
+      -  command: python .yamato/script/log_scripts/log_parser.py
     artifacts:
         logs:
             paths:

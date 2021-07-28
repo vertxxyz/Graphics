@@ -275,7 +275,7 @@ platforms:
         turn_off_firewall:
           - command: NetSh Advfirewall set allprofiles state off
         log_parser:
-          - command: python3 .yamato/script/log_scripts/log_parser.py
+          - command: python .yamato/script/log_scripts/log_parser.py
 
   OSX:
     name: OSX
