@@ -13,7 +13,7 @@ ShaderGraph_BuiltIn_Lighting_Win_DX11_playmode_mono_Linear_trunk:
     name: ShaderGraph_BuiltIn_Lighting on Win_DX11_playmode_mono_Linear on version trunk
     agent:
         type: Unity::VM::GPU
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -50,7 +50,7 @@ ShaderGraph_BuiltIn_Lighting_Win_DX11_playmode_mono_Linear_2021.2:
     name: ShaderGraph_BuiltIn_Lighting on Win_DX11_playmode_mono_Linear on version 2021.2
     agent:
         type: Unity::VM::GPU
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:
@@ -87,7 +87,7 @@ ShaderGraph_BuiltIn_Lighting_Win_DX11_playmode_mono_Linear_CUSTOM-REVISION:
     name: ShaderGraph_BuiltIn_Lighting on Win_DX11_playmode_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM::GPU
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
         model: rtx2080
     variables:

@@ -555,9 +555,9 @@ non_project_agents:
     flavor: m1.mac
   sdet_win_large:
     type: Unity::VM
-    image: sdet/gamecode_win10:stable
+    image: graphics-foundation/gfx-win:latest
     flavor: b1.large
   sdet_win_large_gpu:
     type: Unity::VM::GPU
-    image: sdet/gamecode_win10:stable
+    image: graphics-foundation/gfx-win:latest
     flavor: b1.large

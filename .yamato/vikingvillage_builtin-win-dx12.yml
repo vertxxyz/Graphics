@@ -13,7 +13,7 @@ VikingVillage_BuiltIn_Win_DX12_performance_playmode_runtime_mono_Linear_trunk:
     name: VikingVillage_BuiltIn on Win_DX12_performance_playmode_runtime_mono_Linear on version trunk
     agent:
         type: Unity::VM::GPU
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.large
         model: rtx2080
     variables:
@@ -50,7 +50,7 @@ Build_VikingVillage_BuiltIn_Win_DX12_performance_playmode_runtime_mono_Linear_tr
     name: Build VikingVillage_BuiltIn on Win_DX12_mono_Linear_performance_playmode_runtime_build_Player on version trunk
     agent:
         type: Unity::VM
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -112,7 +112,7 @@ VikingVillage_BuiltIn_Win_DX12_performance_playmode_editor_mono_Linear_trunk:
     name: VikingVillage_BuiltIn on Win_DX12_performance_playmode_editor_mono_Linear on version trunk
     agent:
         type: Unity::VM::GPU
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.large
         model: rtx2080
     variables:
@@ -172,7 +172,7 @@ VikingVillage_BuiltIn_Win_DX12_performance_build_editmode_mono_Linear_trunk:
     name: VikingVillage_BuiltIn on Win_DX12_performance_build_editmode_mono_Linear on version trunk
     agent:
         type: Unity::VM
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -231,7 +231,7 @@ VikingVillage_BuiltIn_Win_DX12_performance_playmode_runtime_mono_Linear_2021.2:
     name: VikingVillage_BuiltIn on Win_DX12_performance_playmode_runtime_mono_Linear on version 2021.2
     agent:
         type: Unity::VM::GPU
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.large
         model: rtx2080
     variables:
@@ -268,7 +268,7 @@ Build_VikingVillage_BuiltIn_Win_DX12_performance_playmode_runtime_mono_Linear_20
     name: Build VikingVillage_BuiltIn on Win_DX12_mono_Linear_performance_playmode_runtime_build_Player on version 2021.2
     agent:
         type: Unity::VM
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -330,7 +330,7 @@ VikingVillage_BuiltIn_Win_DX12_performance_playmode_editor_mono_Linear_2021.2:
     name: VikingVillage_BuiltIn on Win_DX12_performance_playmode_editor_mono_Linear on version 2021.2
     agent:
         type: Unity::VM::GPU
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.large
         model: rtx2080
     variables:
@@ -390,7 +390,7 @@ VikingVillage_BuiltIn_Win_DX12_performance_build_editmode_mono_Linear_2021.2:
     name: VikingVillage_BuiltIn on Win_DX12_performance_build_editmode_mono_Linear on version 2021.2
     agent:
         type: Unity::VM
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -449,7 +449,7 @@ VikingVillage_BuiltIn_Win_DX12_performance_playmode_runtime_mono_Linear_CUSTOM-R
     name: VikingVillage_BuiltIn on Win_DX12_performance_playmode_runtime_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM::GPU
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.large
         model: rtx2080
     variables:
@@ -486,7 +486,7 @@ Build_VikingVillage_BuiltIn_Win_DX12_performance_playmode_runtime_mono_Linear_CU
     name: Build VikingVillage_BuiltIn on Win_DX12_mono_Linear_performance_playmode_runtime_build_Player on version CUSTOM-REVISION
     agent:
         type: Unity::VM
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -548,7 +548,7 @@ VikingVillage_BuiltIn_Win_DX12_performance_playmode_editor_mono_Linear_CUSTOM-RE
     name: VikingVillage_BuiltIn on Win_DX12_performance_playmode_editor_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM::GPU
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.large
         model: rtx2080
     variables:
@@ -608,7 +608,7 @@ VikingVillage_BuiltIn_Win_DX12_performance_build_editmode_mono_Linear_CUSTOM-REV
     name: VikingVillage_BuiltIn on Win_DX12_performance_build_editmode_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM
-        image: sdet/gamecode_win10:stable
+        image: graphics-foundation/gfx-win:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
