@@ -13,7 +13,7 @@ VFX_URP_Linux_Vulkan_Standalone_mono_Linear_trunk:
     name: VFX_URP on Linux_Vulkan_Standalone_mono_Linear on version trunk
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -42,7 +42,7 @@ Build_VFX_URP_Linux_Vulkan_Standalone_mono_Linear_trunk:
     name: Build VFX_URP on Linux_Vulkan_mono_Linear_Standalone_build_Player on version trunk
     agent:
         type: Unity::VM
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -80,7 +80,7 @@ VFX_URP_Linux_Vulkan_Standalone_PerformanceTests_mono_Linear_trunk:
     name: VFX_URP on Linux_Vulkan_Standalone_PerformanceTests_mono_Linear on version trunk
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -109,7 +109,7 @@ Build_VFX_URP_Linux_Vulkan_Standalone_PerformanceTests_mono_Linear_trunk:
     name: Build VFX_URP on Linux_Vulkan_mono_Linear_Standalone_PerformanceTests_build_Player on version trunk
     agent:
         type: Unity::VM
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -147,7 +147,7 @@ VFX_URP_Linux_Vulkan_playmode_mono_Linear_trunk:
     name: VFX_URP on Linux_Vulkan_playmode_mono_Linear on version trunk
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -182,7 +182,7 @@ VFX_URP_Linux_Vulkan_playmode_PerformanceTests_mono_Linear_trunk:
     name: VFX_URP on Linux_Vulkan_playmode_PerformanceTests_mono_Linear on version trunk
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -217,7 +217,7 @@ VFX_URP_Linux_Vulkan_editmode_mono_Linear_trunk:
     name: VFX_URP on Linux_Vulkan_editmode_mono_Linear on version trunk
     agent:
         type: Unity::VM
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -252,7 +252,7 @@ VFX_URP_Linux_Vulkan_editmode_PerformanceTests_mono_Linear_trunk:
     name: VFX_URP on Linux_Vulkan_editmode_PerformanceTests_mono_Linear on version trunk
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -287,7 +287,7 @@ VFX_URP_Linux_Vulkan_Standalone_mono_Linear_2021.2:
     name: VFX_URP on Linux_Vulkan_Standalone_mono_Linear on version 2021.2
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -316,7 +316,7 @@ Build_VFX_URP_Linux_Vulkan_Standalone_mono_Linear_2021.2:
     name: Build VFX_URP on Linux_Vulkan_mono_Linear_Standalone_build_Player on version 2021.2
     agent:
         type: Unity::VM
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -354,7 +354,7 @@ VFX_URP_Linux_Vulkan_Standalone_PerformanceTests_mono_Linear_2021.2:
     name: VFX_URP on Linux_Vulkan_Standalone_PerformanceTests_mono_Linear on version 2021.2
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -383,7 +383,7 @@ Build_VFX_URP_Linux_Vulkan_Standalone_PerformanceTests_mono_Linear_2021.2:
     name: Build VFX_URP on Linux_Vulkan_mono_Linear_Standalone_PerformanceTests_build_Player on version 2021.2
     agent:
         type: Unity::VM
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -421,7 +421,7 @@ VFX_URP_Linux_Vulkan_playmode_mono_Linear_2021.2:
     name: VFX_URP on Linux_Vulkan_playmode_mono_Linear on version 2021.2
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -456,7 +456,7 @@ VFX_URP_Linux_Vulkan_playmode_PerformanceTests_mono_Linear_2021.2:
     name: VFX_URP on Linux_Vulkan_playmode_PerformanceTests_mono_Linear on version 2021.2
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -491,7 +491,7 @@ VFX_URP_Linux_Vulkan_editmode_mono_Linear_2021.2:
     name: VFX_URP on Linux_Vulkan_editmode_mono_Linear on version 2021.2
     agent:
         type: Unity::VM
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -526,7 +526,7 @@ VFX_URP_Linux_Vulkan_editmode_PerformanceTests_mono_Linear_2021.2:
     name: VFX_URP on Linux_Vulkan_editmode_PerformanceTests_mono_Linear on version 2021.2
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -561,7 +561,7 @@ VFX_URP_Linux_Vulkan_Standalone_mono_Linear_CUSTOM-REVISION:
     name: VFX_URP on Linux_Vulkan_Standalone_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -590,7 +590,7 @@ Build_VFX_URP_Linux_Vulkan_Standalone_mono_Linear_CUSTOM-REVISION:
     name: Build VFX_URP on Linux_Vulkan_mono_Linear_Standalone_build_Player on version CUSTOM-REVISION
     agent:
         type: Unity::VM
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -628,7 +628,7 @@ VFX_URP_Linux_Vulkan_Standalone_PerformanceTests_mono_Linear_CUSTOM-REVISION:
     name: VFX_URP on Linux_Vulkan_Standalone_PerformanceTests_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -657,7 +657,7 @@ Build_VFX_URP_Linux_Vulkan_Standalone_PerformanceTests_mono_Linear_CUSTOM-REVISI
     name: Build VFX_URP on Linux_Vulkan_mono_Linear_Standalone_PerformanceTests_build_Player on version CUSTOM-REVISION
     agent:
         type: Unity::VM
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.xlarge
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -695,7 +695,7 @@ VFX_URP_Linux_Vulkan_playmode_mono_Linear_CUSTOM-REVISION:
     name: VFX_URP on Linux_Vulkan_playmode_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -730,7 +730,7 @@ VFX_URP_Linux_Vulkan_playmode_PerformanceTests_mono_Linear_CUSTOM-REVISION:
     name: VFX_URP on Linux_Vulkan_playmode_PerformanceTests_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -765,7 +765,7 @@ VFX_URP_Linux_Vulkan_editmode_mono_Linear_CUSTOM-REVISION:
     name: VFX_URP on Linux_Vulkan_editmode_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -800,7 +800,7 @@ VFX_URP_Linux_Vulkan_editmode_PerformanceTests_mono_Linear_CUSTOM-REVISION:
     name: VFX_URP on Linux_Vulkan_editmode_PerformanceTests_mono_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM::GPU
-        image: package-ci/ubuntu:latest
+        image: graphics-foundation/gfx-ubuntu:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
