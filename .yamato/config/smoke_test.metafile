@@ -11,6 +11,10 @@ test_platforms:
       - [all]: <shared.platform.commands.unity_downloader_cli>
       - [Win_DX11, Win_DX12]: <shared.platform.commands.call_utr_and_exit_0>
       - [all]: <shared.platform.commands.call_utr_without_git>
+    after:
+      - [all]: <shared.platform.commands.log_parser>
+    after_build:
+      - [all]: <shared.platform.commands.log_parser>
 platforms:
   - name: Win
     apis:

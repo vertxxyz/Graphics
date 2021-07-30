@@ -31,6 +31,8 @@ test_platforms:
           - [all]: --timeout=7200
           - [all]: --platform=StandaloneWindows64
           - [all]: --loglevel=verbose
+    after:
+      - [all]: <shared.platform.commands.log_parser>
   - type: editmode
     name: performance_run_build
     allow_cache: True
@@ -49,6 +51,8 @@ test_platforms:
           - [all]: --timeout=14400
           - [all]: --platform=editmode
           - [all]: --loglevel=verbose
+    after:
+      - [all]: <shared.platform.commands.log_parser>
 
 platforms:
   - name: Win

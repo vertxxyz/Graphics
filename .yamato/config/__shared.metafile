@@ -439,7 +439,7 @@ platforms:
           - command: start %ANDROID_SDK_ROOT%\platform-tools\adb.exe kill-server
             retries: 2
         log_parser:
-          - command: python3 .yamato/script/log_scripts/log_parser.py
+          - command: python .yamato/script/log_scripts/log_parser.py
 
 
   XRQuest:

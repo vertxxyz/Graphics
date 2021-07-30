@@ -28,6 +28,10 @@ test_platforms:
     utr_flags_build:
       - [all]: --extra-editor-arg="-xr-reuse-tests"
       - [all]: --timeout=6000
+    after:
+      - [all]: <shared.platform.commands.log_parser>
+    after_build:
+      - [all]: <shared.platform.commands.log_parser>
 
 platforms:
   - name: Win
