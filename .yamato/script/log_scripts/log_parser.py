@@ -1,21 +1,26 @@
 
 import argparse
 import os
-import subprocess
 import sys
 import requests
 import json
 import glob
 import re
-from utils.log_patterns import log_patterns
+from utils.execution_log_patterns import execution_log_patterns
+from utils.hoarder_log_patterns import hoarder_log_patterns
 
 def read_hoarder_log(log_file_path):
     '''Reads error message from hoarder data, when UTR results in non-test related error which is not in the execution log.'''
     with open(log_file_path) as f:
         logs = json.load(f)
 
-    failure_reasons = logs.get('suites',[{}])[0].get('failureReasons')
-    return ' '.join(failure_reasons)
+    failure_reasons = ' '.join(logs.get('suites',[{}])[0].get('failureReasons'))
+    for pattern in hoarder_log_patterns:
+            match = re.search(pattern['pattern'], failure_reasons)
+
+            if match:
+                print('\nFound hoarder failure match for: ',  pattern['pattern'])
+                return failure_reasons, pattern['tags'], pattern['conclusion']
 
 def read_execution_log(log_file_path):
     '''Reads execution logs and returns:
@@ -76,13 +81,13 @@ def parse_failures(logs, local):
 
         # check if the error matches any known pattern marked in log_patterns.py
         output = '\n'.join(logs[cmd]['output'])
-        for pattern in log_patterns:
+        for pattern in execution_log_patterns:
             match = re.search(pattern['pattern'], output)
 
             if match:
-                print('Found failure match: ', cmd, ' : ', pattern['pattern'])
+                print('\nFound execution log failure match for: ', cmd, '\nFor pattern: ', pattern['pattern'])
                 logs[cmd]['title'] = cmd
-                logs[cmd]['summary'] = match.group(0)
+                logs[cmd]['summary'] = match.group(0) if pattern['tags'][0] != 'unknown' else 'Unknown failure: check logs for more details.'
                 logs[cmd]['conclusion'] = pattern['conclusion']
                 logs[cmd]['tags'] = pattern['tags']
 
@@ -90,20 +95,14 @@ def parse_failures(logs, local):
                 if logs[cmd]['tags'][0] == 'non-test':
                     test_results_match = re.findall(r'(--artifacts_path=)(.+)(test-results)', cmd)[0]
                     test_results_path = test_results_match[1] + test_results_match[2]
-                    logs[cmd]['summary'] += read_hoarder_log(os.path.join(test_results_path,'HoarderData.json'))
-                break
+                    hoarder_failures, hoarder_tags, hoarder_conclusion = read_hoarder_log(os.path.join(test_results_path,'HoarderData.json'))
+                    logs[cmd]['summary'] += hoarder_failures
+                    logs[cmd]['tags'].extend(hoarder_tags)
+                    logs[cmd]['conclusion'] = hoarder_conclusion
 
-        # error did not match any known patterns
-        if not logs.get(cmd).get('title'):
-            print('Failure did not match any pattern: ', cmd)
-            logs[cmd]['title'] = cmd
-            logs[cmd]['summary'] = 'Unknown failure: check logs for more details.'
-            logs[cmd]['conclusion'] = 'failure'
-            logs[cmd]['tags'] = ['unknown failure']
-
-        # post additional results to Yamato
-        post_additional_results(logs[cmd], local)
-        return
+                # post additional results to Yamato
+                post_additional_results(logs[cmd], local)
+                return
 
 
 
