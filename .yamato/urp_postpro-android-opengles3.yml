@@ -13,7 +13,7 @@ URP_PostPro_Android_OpenGLES3_Standalone_il2cpp_Linear_trunk:
     name: URP_PostPro on Android_OpenGLES3_Standalone_il2cpp_Linear on version trunk
     agent:
         type: Unity::mobile::android
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -54,7 +54,7 @@ Build_URP_PostPro_Android_OpenGLES3_Standalone_il2cpp_Linear_trunk:
     name: Build URP_PostPro on Android_OpenGLES3_il2cpp_Linear_Standalone_build_Player on version trunk
     agent:
         type: Unity::VM
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -94,7 +94,7 @@ URP_PostPro_Android_OpenGLES3_Standalone_XR_il2cpp_Linear_trunk:
     name: URP_PostPro on Android_OpenGLES3_Standalone_XR_il2cpp_Linear on version trunk
     agent:
         type: Unity::mobile::android
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -135,7 +135,7 @@ Build_URP_PostPro_Android_OpenGLES3_Standalone_XR_il2cpp_Linear_trunk:
     name: Build URP_PostPro on Android_OpenGLES3_il2cpp_Linear_Standalone_XR_build_Player on version trunk
     agent:
         type: Unity::VM
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -175,7 +175,7 @@ URP_PostPro_Android_OpenGLES3_Standalone_il2cpp_Linear_2021.2:
     name: URP_PostPro on Android_OpenGLES3_Standalone_il2cpp_Linear on version 2021.2
     agent:
         type: Unity::mobile::android
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -216,7 +216,7 @@ Build_URP_PostPro_Android_OpenGLES3_Standalone_il2cpp_Linear_2021.2:
     name: Build URP_PostPro on Android_OpenGLES3_il2cpp_Linear_Standalone_build_Player on version 2021.2
     agent:
         type: Unity::VM
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -256,7 +256,7 @@ URP_PostPro_Android_OpenGLES3_Standalone_XR_il2cpp_Linear_2021.2:
     name: URP_PostPro on Android_OpenGLES3_Standalone_XR_il2cpp_Linear on version 2021.2
     agent:
         type: Unity::mobile::android
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -297,7 +297,7 @@ Build_URP_PostPro_Android_OpenGLES3_Standalone_XR_il2cpp_Linear_2021.2:
     name: Build URP_PostPro on Android_OpenGLES3_il2cpp_Linear_Standalone_XR_build_Player on version 2021.2
     agent:
         type: Unity::VM
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -337,7 +337,7 @@ URP_PostPro_Android_OpenGLES3_Standalone_il2cpp_Linear_CUSTOM-REVISION:
     name: URP_PostPro on Android_OpenGLES3_Standalone_il2cpp_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::mobile::android
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -378,7 +378,7 @@ Build_URP_PostPro_Android_OpenGLES3_Standalone_il2cpp_Linear_CUSTOM-REVISION:
     name: Build URP_PostPro on Android_OpenGLES3_il2cpp_Linear_Standalone_build_Player on version CUSTOM-REVISION
     agent:
         type: Unity::VM
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -418,7 +418,7 @@ URP_PostPro_Android_OpenGLES3_Standalone_XR_il2cpp_Linear_CUSTOM-REVISION:
     name: URP_PostPro on Android_OpenGLES3_Standalone_XR_il2cpp_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::mobile::android
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -459,7 +459,7 @@ Build_URP_PostPro_Android_OpenGLES3_Standalone_XR_il2cpp_Linear_CUSTOM-REVISION:
     name: Build URP_PostPro on Android_OpenGLES3_il2cpp_Linear_Standalone_XR_build_Player on version CUSTOM-REVISION
     agent:
         type: Unity::VM
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates

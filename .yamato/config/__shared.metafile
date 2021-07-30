@@ -402,11 +402,11 @@ platforms:
     agents_project:
       default:
         type: Unity::mobile::android
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
       standalone_build:
         type: Unity::VM
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
     commands:
       [OpenGLES3, Vulkan]:
@@ -452,11 +452,11 @@ platforms:
     agents_project:
       default:
         type: Unity::mobile::android
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
       standalone_build:
         type: Unity::VM
-        image: mobile/android-execution-r19:stable
+        image: graphics-foundation/gfx-android:latest
         flavor: b1.large
     commands:
       [OpenGLES3, Vulkan]:
