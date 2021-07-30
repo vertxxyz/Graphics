@@ -13,7 +13,7 @@ VikingVillage_BuiltIn_iPhone_Metal_performance_playmode_runtime_il2cpp_Linear_tr
     name: VikingVillage_BuiltIn on iPhone_Metal_performance_playmode_runtime_il2cpp_Linear on version trunk
     agent:
         type: Unity::mobile::iPhone
-        image: mobile/macos-10.15-testing:stable
+        image: graphics-foundation/gfx-ios:latest
         flavor: b1.medium
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -46,7 +46,7 @@ Build_VikingVillage_BuiltIn_iPhone_Metal_performance_playmode_runtime_il2cpp_Lin
     name: Build VikingVillage_BuiltIn on iPhone_Metal_il2cpp_Linear_performance_playmode_runtime_build_Player on version trunk
     agent:
         type: Unity::VM::osx
-        image: mobile/macos-10.15-testing:stable
+        image: graphics-foundation/gfx-ios:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -105,7 +105,7 @@ VikingVillage_BuiltIn_iPhone_Metal_performance_build_editmode_il2cpp_Linear_trun
     name: VikingVillage_BuiltIn on iPhone_Metal_performance_build_editmode_il2cpp_Linear on version trunk
     agent:
         type: Unity::VM::osx
-        image: mobile/macos-10.15-testing:stable
+        image: graphics-foundation/gfx-ios:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -163,7 +163,7 @@ VikingVillage_BuiltIn_iPhone_Metal_performance_playmode_runtime_il2cpp_Linear_20
     name: VikingVillage_BuiltIn on iPhone_Metal_performance_playmode_runtime_il2cpp_Linear on version 2021.2
     agent:
         type: Unity::mobile::iPhone
-        image: mobile/macos-10.15-testing:stable
+        image: graphics-foundation/gfx-ios:latest
         flavor: b1.medium
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -196,7 +196,7 @@ Build_VikingVillage_BuiltIn_iPhone_Metal_performance_playmode_runtime_il2cpp_Lin
     name: Build VikingVillage_BuiltIn on iPhone_Metal_il2cpp_Linear_performance_playmode_runtime_build_Player on version 2021.2
     agent:
         type: Unity::VM::osx
-        image: mobile/macos-10.15-testing:stable
+        image: graphics-foundation/gfx-ios:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -255,7 +255,7 @@ VikingVillage_BuiltIn_iPhone_Metal_performance_build_editmode_il2cpp_Linear_2021
     name: VikingVillage_BuiltIn on iPhone_Metal_performance_build_editmode_il2cpp_Linear on version 2021.2
     agent:
         type: Unity::VM::osx
-        image: mobile/macos-10.15-testing:stable
+        image: graphics-foundation/gfx-ios:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -313,7 +313,7 @@ VikingVillage_BuiltIn_iPhone_Metal_performance_playmode_runtime_il2cpp_Linear_CU
     name: VikingVillage_BuiltIn on iPhone_Metal_performance_playmode_runtime_il2cpp_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::mobile::iPhone
-        image: mobile/macos-10.15-testing:stable
+        image: graphics-foundation/gfx-ios:latest
         flavor: b1.medium
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -346,7 +346,7 @@ Build_VikingVillage_BuiltIn_iPhone_Metal_performance_playmode_runtime_il2cpp_Lin
     name: Build VikingVillage_BuiltIn on iPhone_Metal_il2cpp_Linear_performance_playmode_runtime_build_Player on version CUSTOM-REVISION
     agent:
         type: Unity::VM::osx
-        image: mobile/macos-10.15-testing:stable
+        image: graphics-foundation/gfx-ios:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
@@ -405,7 +405,7 @@ VikingVillage_BuiltIn_iPhone_Metal_performance_build_editmode_il2cpp_Linear_CUST
     name: VikingVillage_BuiltIn on iPhone_Metal_performance_build_editmode_il2cpp_Linear on version CUSTOM-REVISION
     agent:
         type: Unity::VM::osx
-        image: mobile/macos-10.15-testing:stable
+        image: graphics-foundation/gfx-ios:latest
         flavor: b1.large
     variables:
         UPM_REGISTRY: https://artifactory-slo.bf.unity3d.com/artifactory/api/npm/upm-candidates
