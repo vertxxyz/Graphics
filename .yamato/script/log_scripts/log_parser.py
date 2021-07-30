@@ -9,7 +9,15 @@ import glob
 import re
 from utils.log_patterns import log_patterns
 
-def get_logs(log_file_path):
+def read_hoarder_log(log_file_path):
+    '''Reads error message from hoarder data, when UTR results in non-test related error which is not in the execution log.'''
+    with open(log_file_path) as f:
+        logs = json.load(f)
+
+    failure_reasons = logs.get('suites',[{}])[0].get('failureReasons')
+    return ' '.join(failure_reasons)
+
+def read_execution_log(log_file_path):
     '''Reads execution logs and returns:
     logs: dictionary with keys corresponding to commands, and values containing log output and status
     overall_status: success/failure status for the whole job
@@ -40,7 +48,6 @@ def get_logs(log_file_path):
     return logs, overall_status
 
 
-
 def post_additional_results(cmd, local):
 
     data = {
@@ -50,7 +57,7 @@ def post_additional_results(cmd, local):
         'tags' : cmd['tags']
     }
 
-    print('Posting: ', data)
+    print('\nPosting: ', json.dumps(data,indent=2))
     if not local:
         server_url = os.environ['YAMATO_REPORTING_SERVER'] + '/result'
         headers = {'Content-Type':'application/json'}
@@ -62,34 +69,46 @@ def parse_failures(logs, local):
     for cmd in logs.keys():
 
         # skip parsing successful commands, or failed tests (these get automatically parsed in yamato results)
+        # TODO: do we also want to add additional yamato results for these?
         if logs[cmd]['status'] == 'Success' or any("Reason(s): One or more tests have failed." in line for line in logs[cmd]['output']):
-            # TODO: do we also want to add additional yamato results for successful commands?
             print('Skipping: ', cmd)
             continue
 
+        # check if the error matches any known pattern marked in log_patterns.py
         output = '\n'.join(logs[cmd]['output'])
         for pattern in log_patterns:
             match = re.search(pattern['pattern'], output)
+
             if match:
                 print('Found failure match: ', cmd, ' : ', pattern['pattern'])
                 logs[cmd]['title'] = cmd
                 logs[cmd]['summary'] = match.group(0)
                 logs[cmd]['conclusion'] = pattern['conclusion']
                 logs[cmd]['tags'] = pattern['tags']
-            else:
-                print('Failure did not match any pattern: ', cmd)
-                logs[cmd]['title'] = cmd
-                logs[cmd]['summary'] = 'Unknown failure: check logs for more details.'
-                logs[cmd]['conclusion'] = 'failure'
-                logs[cmd]['tags'] = ['unknown failure']
-            post_additional_results(logs[cmd], local)
-            break
-        break # only parse until first failed command
-    return logs
+
+                # if it is an UTR non-test related error message not shown in Execution log but in test-results, append that to summary
+                if logs[cmd]['tags'][0] == 'non-test':
+                    test_results_match = re.findall(r'(--artifacts_path=)(.+)(test-results)', cmd)[0]
+                    test_results_path = test_results_match[1] + test_results_match[2]
+                    logs[cmd]['summary'] += read_hoarder_log(os.path.join(test_results_path,'HoarderData.json'))
+                break
+
+        # error did not match any known patterns
+        if not logs.get(cmd).get('title'):
+            print('Failure did not match any pattern: ', cmd)
+            logs[cmd]['title'] = cmd
+            logs[cmd]['summary'] = 'Unknown failure: check logs for more details.'
+            logs[cmd]['conclusion'] = 'failure'
+            logs[cmd]['tags'] = ['unknown failure']
+
+        # post additional results to Yamato
+        post_additional_results(logs[cmd], local)
+        return
 
 
 
 def get_execution_log():
+    '''Returns the path to execution log file.'''
     path_to_execution_log = os.path.join(os.path.dirname(os.path.dirname(os.getcwd())),'Execution-*.log')
     print('Searching for logs in: ', path_to_execution_log)
 
@@ -109,13 +128,13 @@ def parse_args(argv):
 def main(argv):
     args = parse_args(argv)
 
+    # read execution logs
     execution_log_file = get_execution_log() if not args.execution_log else args.execution_log
-    logs, overall_status = get_logs(execution_log_file)
+    logs, overall_status = read_execution_log(execution_log_file)
+
+    # only parse failures if the job has failed
     if 'Failed' in overall_status:
         parse_failures(logs, args.local)
-
-    with open('parsed_logs.json', 'w') as outfile:
-        json.dump(logs, outfile, indent=2)
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv[1:]))

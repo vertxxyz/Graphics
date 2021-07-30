@@ -9,7 +9,12 @@ log_patterns = [
     },
     {
         'pattern': r'Reason\(s\): One or more tests have failed.', # this one is unused right now since yamato does it automatically
-        'tags': ['tests failed'],
+        'tags': ['tests'],
+        'conclusion': 'failure',
+    },
+    {
+        'pattern': r'Reason\(s\): One or more non-test related errors or failures occurred.', # if hit this, read hoarder file
+        'tags': ['non-test'], #todo proper tags
         'conclusion': 'failure',
     },
     {
