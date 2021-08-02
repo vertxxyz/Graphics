@@ -4,10 +4,33 @@
 # Conclusions of hoarder_log_patterns overwrite conclusions of execution_log_patterns.
 # Tags of hoarder_log_patterns get appended to tags of execution_log_patterns.
 
+# TODO: patterns for indvidual test cases, warnings
+# TODO: proper tags
 execution_log_patterns = [
     {
-        # 'pattern': r'(packet_write_poll: Connection to)((.|\n)+)(Operation not permitted)((.|\n)+)(lost connection)',
+        'pattern': r'(command not found)',
+        'tags': ['failure'],
+        'conclusion': 'failure',
+    },
+    {
+        #  Or with newlines: r'(packet_write_poll: Connection to)((.|\n)+)(Operation not permitted)((.|\n)+)(lost connection)',
         'pattern': r'(packet_write_poll: Connection to)(.+)(Operation not permitted)',
+        'tags': ['instability'],
+        'conclusion': 'inconclusive',
+    },
+    {
+        # Or: r'(LTO : error: L0496: error during communication with the LTO process: The pipe has been ended)'
+        'pattern': r'(orbis-ld stderr :LLVM ERROR: out of memory)((.|\n)+)(LLVM ERROR: out of memory)',
+        'tags': ['oom','instability'],
+        'conclusion': 'inconclusive',
+    },
+    {
+        'pattern': r'(fatal: not a git repository (or any of the parent directories): .git)',
+        'tags': ['instability'],
+        'conclusion': 'inconclusive',
+    },
+    {
+        'pattern': r'(LTO : error: L0492: LTOP internal error: bad allocation)',
         'tags': ['instability'],
         'conclusion': 'inconclusive',
     },
@@ -18,12 +41,7 @@ execution_log_patterns = [
     },
     {
         'pattern': r'Reason\(s\): One or more non-test related errors or failures occurred.', # if hit this, read hoarder file
-        'tags': ['non-test'], #todo proper tags
-        'conclusion': 'failure',
-    },
-    {
-        'pattern': r'(command not found)',
-        'tags': ['failure'],
+        'tags': ['non-test'],
         'conclusion': 'failure',
     },
     {

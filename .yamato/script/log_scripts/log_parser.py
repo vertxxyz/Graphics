@@ -14,13 +14,15 @@ def read_hoarder_log(log_file_path):
     with open(log_file_path) as f:
         logs = json.load(f)
 
-    failure_reasons = ' '.join(logs.get('suites',[{}])[0].get('failureReasons'))
+    suites = logs.get('suites') if len(logs.get('suites',[])) > 0 else [{}]
+    failure_reasons = ' '.join(suites[0].get('failureReasons',['']))
     for pattern in hoarder_log_patterns:
             match = re.search(pattern['pattern'], failure_reasons)
 
             if match:
                 print('\nFound hoarder failure match for: ',  pattern['pattern'])
                 return failure_reasons, pattern['tags'], pattern['conclusion']
+    return failure_reasons, [], 'failure'
 
 def read_execution_log(log_file_path):
     '''Reads execution logs and returns:
