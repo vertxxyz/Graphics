@@ -122,6 +122,9 @@ namespace UnityEngine.Rendering.HighDefinition
             [WriteOnly]
             [NativeDisableContainerSafetyRestriction]
             public NativeArray<uint>   sortKeys;
+            [WriteOnly]
+            [NativeDisableContainerSafetyRestriction]
+            public NativeArray<int>   shadowLightsDataIndices;
             #endregion
 
             private bool TrivialRejectLight(in VisibleLight light, in HDLightEntityData lightEntity)
@@ -327,6 +330,12 @@ namespace UnityEngine.Rendering.HighDefinition
                 processedLightIsBakedShadowMask[outputIndex] = isBakedShadowMaskLight;
                 processedShadowMapFlags[outputIndex] = shadowMapFlags;
                 sortKeys[outputIndex] = sortKey;
+
+                if ((shadowMapFlags & HDVisibleLightEntities.ShadowMapFlags.WillRenderShadowMap) != 0)
+                {
+                    int shadowOutputIndex = IncrementCounter(HDVisibleLightEntities.ProcessLightsCountSlots.ShadowLights) - 1;
+                    shadowLightsDataIndices[shadowOutputIndex] = outputIndex;
+                }
             }
         }
 
@@ -400,7 +409,8 @@ namespace UnityEngine.Rendering.HighDefinition
                 processedLightVolumetricDistanceFade = m_ProcessedLightVolumetricDistanceFade,
                 processedLightIsBakedShadowMask      = m_ProcessedLightIsBakedShadowMask,
                 processedShadowMapFlags        = m_ProcessedShadowMapFlags,
-                sortKeys                       = m_SortKeys
+                sortKeys                       = m_SortKeys,
+                shadowLightsDataIndices        = m_ShadowLightsDataIndices
             };
 
             m_ProcessVisibleLightJobHandle = processVisibleLightJob.Schedule(m_Size, 32);

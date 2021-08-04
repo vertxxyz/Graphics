@@ -18,7 +18,8 @@ namespace UnityEngine.Rendering.HighDefinition
             ProcessedLights,
             DirectionalLights,
             PunctualLights,
-            AreaLightCounts
+            AreaLightCounts,
+            ShadowLights,
         }
 
         [Flags]
@@ -51,6 +52,7 @@ namespace UnityEngine.Rendering.HighDefinition
         NativeArray<bool>            m_ProcessedLightIsBakedShadowMask;
         NativeArray<ShadowMapFlags>  m_ProcessedShadowMapFlags;
         NativeArray<uint>            m_SortKeys;
+        NativeArray<int>             m_ShadowLightsDataIndices;
 
         private void ResizeArrays(int newCapacity)
         {
@@ -70,6 +72,7 @@ namespace UnityEngine.Rendering.HighDefinition
             m_ProcessedLightIsBakedShadowMask.ResizeArray(m_Capacity);
             m_ProcessedShadowMapFlags.ResizeArray(m_Capacity);
             m_SortKeys.ResizeArray(m_Capacity);
+            m_ShadowLightsDataIndices.ResizeArray(m_Capacity);
         }
 
         private void DisposeArrays()
@@ -94,6 +97,8 @@ namespace UnityEngine.Rendering.HighDefinition
             m_ProcessedLightIsBakedShadowMask.Dispose();
             m_ProcessedShadowMapFlags.Dispose();
             m_SortKeys.Dispose();
+            m_ShadowLightsDataIndices.Dispose();
+
             m_Capacity = 0;
             m_Size = 0;
         }
@@ -128,6 +133,7 @@ namespace UnityEngine.Rendering.HighDefinition
             FilterVisibleLightsByAOV(aovRequestData);
             StartProcessVisibleLightJob(camera, cullingResult.visibleLights, lightLoopSettings, debugDisplaySettings);
             CompleteProcessVisibleLightJob();
+            ProcessShadows(cullingResult);
             FilterProcessedLightsByDebugFilter(debugDisplaySettings);
         }
 
@@ -181,6 +187,28 @@ namespace UnityEngine.Rendering.HighDefinition
                     m_VisibleLightBakingOutput[i] = light.bakingOutput;
                     m_VisibleLightShadows[i] = light.shadows;
                 }
+            }
+        }
+
+        private void ProcessShadows(in CullingResults cullResults)
+        {
+            int shadowLights = m_ProcessVisibleLightCounts[(int)ProcessLightsCountSlots.ShadowLights];
+            if (shadowLights == 0)
+                return;
+
+            NativeArray<VisibleLight> visibleLights = cullResults.visibleLights;
+            for (int i = 0; i < shadowLights; ++i)
+            {
+                int processedLightIndex = m_ShadowLightsDataIndices[i];
+                int visibleLightIndex = m_ProcessedVisibleLightIndices[processedLightIndex];
+                if (!cullResults.GetShadowCasterBounds(visibleLightIndex, out var bounds))
+                {
+                    m_ProcessedShadowMapFlags[processedLightIndex] = ShadowMapFlags.None;
+                    continue;
+                }
+
+                VisibleLight visibleLight = visibleLights[visibleLightIndex];
+                //todo, ReserveShadowMap here.
             }
         }
 
