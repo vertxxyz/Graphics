@@ -130,6 +130,10 @@ namespace UnityEngine.Rendering.HighDefinition
             DebugDisplaySettings debugDisplaySettings)
         {
             BuildVisibleLightEntities(cullingResult);
+
+            if (m_Size == 0)
+                return;
+
             FilterVisibleLightsByAOV(aovRequestData);
             StartProcessVisibleLightJob(camera, cullingResult.visibleLights, lightLoopSettings, debugDisplaySettings);
             CompleteProcessVisibleLightJob();
