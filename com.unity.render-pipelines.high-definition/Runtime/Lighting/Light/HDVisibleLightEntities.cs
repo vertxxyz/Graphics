@@ -153,19 +153,22 @@ namespace UnityEngine.Rendering.HighDefinition
             in GlobalLightLoopSettings lightLoopSettings,
             DebugDisplaySettings debugDisplaySettings)
         {
-            BuildVisibleLightEntities(cullingResult);
+            using (new ProfilingScope(null, ProfilingSampler.Get(HDProfileId.PrepareLightsForGPU)))
+            {
+                BuildVisibleLightEntities(cullingResult);
 
-            if (m_Size == 0)
-                return;
+                if (m_Size == 0)
+                    return;
 
-            FilterVisibleLightsByAOV(aovRequestData);
-            StartProcessVisibleLightJob(hdCamera, cullingResult.visibleLights, lightLoopSettings, debugDisplaySettings);
-            CompleteProcessVisibleLightJob();
+                FilterVisibleLightsByAOV(aovRequestData);
+                StartProcessVisibleLightJob(hdCamera, cullingResult.visibleLights, lightLoopSettings, debugDisplaySettings);
+                CompleteProcessVisibleLightJob();
 
-            ProcessShadows(hdCamera, shadowManager, inShadowInitParameters, cullingResult);
-            FilterProcessedLightsByDebugFilter(debugDisplaySettings);
+                ProcessShadows(hdCamera, shadowManager, inShadowInitParameters, cullingResult);
+                FilterProcessedLightsByDebugFilter(debugDisplaySettings);
 
-            SortLightKeys();
+                SortLightKeys();
+            }
         }
 
         public static void Cleanup()
