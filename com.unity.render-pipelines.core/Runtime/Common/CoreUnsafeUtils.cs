@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 
 namespace UnityEngine.Rendering
@@ -149,6 +150,213 @@ namespace UnityEngine.Rendering
             for (int i = 0; i < c; ++i)
                 UnsafeUtility.WriteArrayElement<T>(dest, i, list[i]);
         }
+
+        private static void RadixCalculateRadixParams(int radixBits, out int bitStates)
+        {
+            bitStates = 1 << radixBits;
+            if (radixBits != 2 && radixBits != 4 && radixBits != 8)
+                throw new Exception("Radix bits must be 2, 4 or 8 for uint radix sort.");
+        }
+
+        private static int RadixCalculateSupportSize(int bitStates, int arrayLength)
+        {
+            return bitStates * 3 + arrayLength;
+        }
+
+        private static unsafe void GetSupportArrays(
+            int bitStates, int arrayLength, uint* supportArray,
+            out uint* bucketIndices, out uint* bucketSizes, out uint* bucketPrefix, out uint* arrayOutput)
+        {
+            bucketIndices = supportArray;
+            bucketSizes = bucketIndices + bitStates;
+            bucketPrefix = bucketSizes + bitStates;
+            arrayOutput = bucketPrefix + bitStates;
+        }
+
+        private static unsafe void MergeSort(uint* array, uint* support, int length)
+        {
+            for (int k=1; k < length; k *= 2 ) {       
+                for (int left=0; left+k < length; left += k*2 ) {
+                    int right = left + k;        
+                    int rightend = right + k;
+                    if (rightend > length)
+                        rightend = length; 
+                    int m = left;
+                    int i = left;
+                    int j = right; 
+                    while (i < right && j < rightend) { 
+                        if (array[i] <= array[j]) {         
+                            support[m] = array[i++];
+                        } else {
+                            support[m] = array[j++];
+                        }
+                        m++;
+                    }
+                    while (i < right) { 
+                        support[m]=array[i++]; 
+                        m++;
+                    }
+                    while (j < rightend) { 
+                        support[m]=array[j++]; 
+                        m++;
+                    }
+                    for (m=left; m < rightend; m++) { 
+                        array[m] = support[m]; 
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Merge sort - non recursive
+        /// </summary>
+        /// <param name="arr">array to sort.</param>
+        /// <param name="supportArray">secondary array reference, used to store intermediate merge results.</param>
+        public static unsafe void MergeSort(uint[] arr, ref uint[] supportArray)
+        {
+            if (arr == null || arr.Length == 0)
+                return;
+            
+            if (supportArray == null || supportArray.Length < arr.Length)
+                supportArray = new uint[arr.Length];
+
+            fixed (uint* arrPtr = arr)
+            fixed (uint* supportPtr = supportArray)
+            CoreUnsafeUtils.MergeSort(arrPtr, supportPtr, arr.Length);
+        }
+
+        /// <summary>
+        /// Merge sort - non recursive
+        /// </summary>
+        /// <param name="arr">array to sort.</param>
+        /// <param name="supportArray">secondary array reference, used to store intermediate merge results.</param>
+        public static unsafe void MergeSort(NativeArray<uint> arr, ref NativeArray<uint> supportArray)
+        {
+            if (!arr.IsCreated || arr.Length == 0)
+                return;
+        
+            if (!supportArray.IsCreated || supportArray.Length < arr.Length)
+                supportArray.ResizeArray(arr.Length);
+
+            CoreUnsafeUtils.MergeSort((uint*)arr.GetUnsafePtr(), (uint*)supportArray.GetUnsafePtr(), arr.Length);
+        }
+
+        private static unsafe void InsertionSort(uint* arr, int length)
+        {
+            for (int i = 0; i < length; ++i)
+            {
+                for (int j = i; j >= 1; --j)
+                {
+                    if (arr[j] >= arr[j - 1])
+                        break;
+
+                    var tmp = arr[j];
+                    arr[j] = arr[j - 1];
+                    arr[j - 1] = tmp;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Insertion sort
+        /// </summary>
+        /// <param name="arr">array to sort.</param>
+        public static unsafe void InsertionSort(uint[] arr)
+        {
+            if (arr == null || arr.Length == 0)
+                return;
+
+            fixed(uint* ptr = arr)
+            CoreUnsafeUtils.InsertionSort(ptr, arr.Length);
+        }
+
+        /// <summary>
+        /// Insertion sort
+        /// </summary>
+        /// <param name="arr">array to sort.</param>
+        public static unsafe void InsertionSort(NativeArray<uint> arr)
+        {
+            if (!arr.IsCreated || arr.Length == 0)
+                return;
+
+            CoreUnsafeUtils.InsertionSort((uint*)arr.GetUnsafePtr(), arr.Length);
+        }
+
+        private static unsafe void RadixSort(uint* array, uint* support, int radixBits, int bitStates, int length) 
+        {
+            uint mask = (uint)(bitStates - 1);
+            GetSupportArrays(bitStates, length, support, out uint* bucketIndices, out uint* bucketSizes, out uint* bucketPrefix, out uint* arrayOutput);
+            
+            int buckets = (sizeof(uint) * 8) / radixBits;
+            uint* targetBuffer = arrayOutput;
+            uint* inputBuffer = array;
+            for (int b = 0; b < buckets; ++b)
+            {
+                int shift = b * radixBits;
+                for (int s = 0; s < 3*bitStates; ++s)
+                    bucketIndices[s] = 0;//bucketSizes and bucketPrefix get zeroed, since we walk 3x the bit states
+
+                for (int i = 0; i < length; ++i)
+                    bucketSizes[((inputBuffer[i] >> shift) & mask)]++;
+
+                for (int s = 1; s < bitStates; ++s)
+                    bucketPrefix[s] = bucketPrefix[s - 1] + bucketSizes[s - 1];
+
+                for (int i = 0; i < length; ++i)
+                {
+                    uint val = inputBuffer[i];
+                    uint bucket = (val >> shift) & mask;
+                    targetBuffer[bucketPrefix[bucket] + bucketIndices[bucket]++] = val;
+                }
+
+                uint* tmp = inputBuffer;
+                inputBuffer = targetBuffer;
+                targetBuffer = tmp;
+            }
+        }
+
+        /// <summary>
+        /// Radix Sort
+        /// Radix sort or bucket sort, stable and non in place.
+        /// </summary>
+        /// <param name="arr">array to sort.</param>
+        /// <param name="supportArray">array of uints that is used for support data. The algorithm will automatically allocate it if necessary.</param>
+        /// <param name="radixBits">Number of bits to use for each bucket. Can only be 8, 4 or 2.</param>
+        public static unsafe void RadixSort(uint[] arr, ref uint[] supportArray, int radixBits = 8)
+        {
+            RadixCalculateRadixParams(radixBits, out int bitStates);
+            if (arr == null || arr.Length == 0)
+                return;
+
+            int supportSize = RadixCalculateSupportSize(bitStates, arr.Length);
+            if (supportArray == null || supportArray.Length < supportSize)
+                supportArray = new uint[supportSize];
+
+            fixed(uint* ptr = arr)
+            fixed(uint* supportArrayPtr = supportArray)
+            CoreUnsafeUtils.RadixSort(ptr, supportArrayPtr, radixBits, bitStates, arr.Length);
+        }
+
+        /// <summary>
+        /// Radix Sort
+        /// Radix sort or bucket sort, stable and non in place.
+        /// </summary>
+        /// <param name="arr">array to sort.</param>
+        /// <param name="supportArray">array of uints that is used for support data. The algorithm will automatically allocate it if necessary.</param>
+        /// <param name="radixBits">Number of bits to use for each bucket. Can only be 8, 4 or 2.</param>
+        public static unsafe void RadixSort(NativeArray<uint> array, ref NativeArray<uint> supportArray, int radixBits = 8)
+        {
+            RadixCalculateRadixParams(radixBits, out int bitStates);
+            if (!array.IsCreated || array.Length == 0)
+                return;
+
+            int supportSize = RadixCalculateSupportSize(bitStates, array.Length);
+            if (!supportArray.IsCreated || supportArray.Length < supportSize)
+                supportArray.ResizeArray((int)supportSize);
+
+            CoreUnsafeUtils.RadixSort((uint*)array.GetUnsafePtr(), (uint*)supportArray.GetUnsafePtr(), radixBits, bitStates, array.Length);
+        }
+
 
         /// <summary>
         /// Quick Sort

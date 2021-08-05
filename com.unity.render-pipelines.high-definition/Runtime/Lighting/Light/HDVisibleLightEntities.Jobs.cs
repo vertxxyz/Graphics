@@ -12,6 +12,9 @@ namespace UnityEngine.Rendering.HighDefinition
     {
         JobHandle m_ProcessVisibleLightJobHandle;
 
+#if ENABLE_BURST_1_5_0_OR_NEWER
+        [Unity.Burst.BurstCompile]
+#endif
         struct ProcessVisibleLightJob : IJobParallelFor
         {
             #region Light entity SoA data
@@ -264,9 +267,6 @@ namespace UnityEngine.Rendering.HighDefinition
                 return flags;
             }
 
-#if ENABLE_BURST_1_5_0_OR_NEWER
-            [Unity.Burst.BurstCompile]
-#endif
             public void Execute(int index)
             {
                 VisibleLight visibleLight = visibleLights[index];

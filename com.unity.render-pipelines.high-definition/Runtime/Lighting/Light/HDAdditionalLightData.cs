@@ -3539,6 +3539,7 @@ namespace UnityEngine.Rendering.HighDefinition
             HDLightEntityCollection collection = HDLightEntityCollection.instance;
             lightEntity = collection.CreateEntity(legacyLight.GetInstanceID(), transform);
 
+            collection.UpdateHDAdditionalLightData(lightEntity, this);//TODO: only added for shadow calculations. To be removed at some point.
             collection.UpdateAOVGameObject(lightEntity, legacyLight.gameObject);
             collection.UpdatePointLightType(lightEntity, m_PointlightHDType);
             collection.UpdateSpotLightShape(lightEntity,  m_SpotLightShape);

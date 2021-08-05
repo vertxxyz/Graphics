@@ -154,6 +154,7 @@ namespace UnityEngine.Rendering.HighDefinition
         ProcessVisibleLights,
         SortVisibleLights,
         BuildVisibleLightEntities,
+        ProcessShadows,
 
         // Profile sampler for shadow
         RenderShadowMaps,

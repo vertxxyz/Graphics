@@ -13,14 +13,14 @@ namespace UnityEngine.Rendering.HighDefinition
         #region Transform jobs
         JobHandle m_LightTransformDataJob;
 
+#if ENABLE_BURST_1_5_0_OR_NEWER
+        [Unity.Burst.BurstCompile]
+#endif
         private struct LightCopyTransformDataJob : IJobParallelForTransform
         {
             [WriteOnly]
             public NativeArray<float3> lightPositions;
 
-#if ENABLE_BURST_1_5_0_OR_NEWER
-            [Unity.Burst.BurstCompile]
-#endif
             public void Execute(int index, TransformAccess transform)
             {
                 lightPositions[index] = (float3)transform.position;

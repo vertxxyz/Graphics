@@ -2677,7 +2677,7 @@ namespace UnityEngine.Rendering.HighDefinition
             HDShadowManager.cachedShadowManager.AssignSlotsInAtlases();
 
             var lightLoopSettings = asset.currentPlatformRenderPipelineSettings.lightLoopSettings;
-            visibleLightEntities.PrepareLightsForGPU(hdCamera, cullResults, aovRequest, lightLoopSettings, m_CurrentDebugDisplaySettings);
+            visibleLightEntities.PrepareLightsForGPU(hdCamera, cullResults, m_ShadowManager, m_ShadowInitParameters, aovRequest, lightLoopSettings, m_CurrentDebugDisplaySettings);
 
             using (new ProfilingScope(cmd, ProfilingSampler.Get(HDProfileId.PrepareLightsForGPU)))
             {

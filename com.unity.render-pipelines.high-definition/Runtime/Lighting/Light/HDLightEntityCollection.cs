@@ -48,9 +48,11 @@ namespace UnityEngine.Rendering.HighDefinition
 
         #region Structure of arrays for lights
         private GameObject[] m_AOVGameObjects = null;
+
+        //TODO: Hack array just used for shadow allocation. Need to refactor this so we dont depend on hdAdditionalData
+        private HDAdditionalLightData[]                    m_HDAdditionalLightData = null;
         private TransformAccessArray                       m_LightTransforms;
         private NativeArray<HDLightEntity>                 m_OwnerEntity;
-        private NativeArray<int>                           m_AOVLightIDs;
         private NativeArray<float3>                        m_LightPositions;
         private NativeArray<HDAdditionalLightData.PointLightHDType> m_PointLightType;
         private NativeArray<SpotLightShape>                m_SpotLightShape;
@@ -69,18 +71,22 @@ namespace UnityEngine.Rendering.HighDefinition
 
         private void ResizeArrays()
         {
-            if (!m_LightTransforms.isCreated)
-                m_LightTransforms = new TransformAccessArray(m_Capacity);
+            if (m_HDAdditionalLightData == null)
+                m_HDAdditionalLightData = new HDAdditionalLightData[m_Capacity];
             else
-                m_LightTransforms.ResizeArray(m_Capacity);
+                Array.Resize(ref m_HDAdditionalLightData, m_Capacity);
 
             if (m_AOVGameObjects == null)
                 m_AOVGameObjects = new GameObject[m_Capacity];
             else
                 Array.Resize(ref m_AOVGameObjects, m_Capacity);
 
+            if (!m_LightTransforms.isCreated)
+                m_LightTransforms = new TransformAccessArray(m_Capacity);
+            else
+                m_LightTransforms.ResizeArray(m_Capacity);
+
             m_OwnerEntity.ResizeArray(m_Capacity);
-            m_AOVLightIDs.ResizeArray(m_Capacity);
             m_LightPositions.ResizeArray(m_Capacity);
             m_PointLightType.ResizeArray(m_Capacity);
             m_SpotLightShape.ResizeArray(m_Capacity);
@@ -101,12 +107,14 @@ namespace UnityEngine.Rendering.HighDefinition
         private void RemoveAtSwapBackArrays(int removeIndexAt)
         {
             int lastIndex = m_LightCount - 1;
+            m_HDAdditionalLightData[removeIndexAt] = m_HDAdditionalLightData[lastIndex];
+            m_HDAdditionalLightData[lastIndex] = null;
+
             m_AOVGameObjects[removeIndexAt] = m_AOVGameObjects[lastIndex];
             m_AOVGameObjects[lastIndex] = null;
 
             m_LightTransforms.RemoveAtSwapBack(removeIndexAt);
             m_OwnerEntity[removeIndexAt] = m_OwnerEntity[lastIndex];
-            m_AOVLightIDs[removeIndexAt] = m_AOVLightIDs[lastIndex];
             m_LightPositions[removeIndexAt] = m_LightPositions[lastIndex];
             m_PointLightType[removeIndexAt] = m_PointLightType[lastIndex];
             m_SpotLightShape[removeIndexAt] = m_SpotLightShape[lastIndex];
@@ -132,10 +140,10 @@ namespace UnityEngine.Rendering.HighDefinition
             if (m_Capacity == 0)
                 return;
 
+            m_HDAdditionalLightData = null;
             m_AOVGameObjects = null;
             m_LightTransforms.Dispose();
             m_OwnerEntity.Dispose();
-            m_AOVLightIDs.Dispose();
             m_LightPositions.Dispose();
             m_PointLightType.Dispose();
             m_SpotLightShape.Dispose();
@@ -160,8 +168,9 @@ namespace UnityEngine.Rendering.HighDefinition
 
         public int lightCount => m_LightCount;
 
-        public TransformAccessArray lightTransforms => m_LightTransforms;
+        public HDAdditionalLightData[] hdAdditionalLightData => m_HDAdditionalLightData;
         public GameObject[] aovGameObjects => m_AOVGameObjects;
+        public TransformAccessArray lightTransforms => m_LightTransforms;
         public NativeArray<float3> lightPositions => m_LightPositions;
         public NativeArray<HDAdditionalLightData.PointLightHDType> pointLightTypes => m_PointLightType;
         public NativeArray<SpotLightShape> spotLightShapes => m_SpotLightShape;
@@ -178,6 +187,7 @@ namespace UnityEngine.Rendering.HighDefinition
         public NativeArray<bool> affectDiffuse => m_AffectDiffuse;
         public NativeArray<bool> affectSpecular => m_AffectSpecular;
 
+        public void UpdateHDAdditionalLightData(in HDLightEntity entity, HDAdditionalLightData val) { m_HDAdditionalLightData[m_LightEntities[entity.entityIndex].dataIndex] = val; }
         public void UpdateAOVGameObject(in HDLightEntity entity, GameObject val) { m_AOVGameObjects[m_LightEntities[entity.entityIndex].dataIndex] = val; }
         public void UpdatePointLightType(in HDLightEntity entity, HDAdditionalLightData.PointLightHDType val) { m_PointLightType[m_LightEntities[entity.entityIndex].dataIndex] = val; }
         public void UpdateSpotLightShape(in HDLightEntity entity, SpotLightShape val) { m_SpotLightShape[m_LightEntities[entity.entityIndex].dataIndex] = val; }

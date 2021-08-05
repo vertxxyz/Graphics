@@ -31,6 +31,7 @@ namespace UnityEngine.Rendering.HighDefinition
             WillRenderRayTracedShadow = 1 << 2
         }
 
+
         NativeArray<int> m_ProcessVisibleLightCounts;
 
         #region visible lights SoA
@@ -52,6 +53,7 @@ namespace UnityEngine.Rendering.HighDefinition
         NativeArray<bool>            m_ProcessedLightIsBakedShadowMask;
         NativeArray<ShadowMapFlags>  m_ProcessedShadowMapFlags;
         NativeArray<uint>            m_SortKeys;
+        NativeArray<uint>            m_SortSupportArray;
         NativeArray<int>             m_ShadowLightsDataIndices;
 
         private void ResizeArrays(int newCapacity)
@@ -77,6 +79,9 @@ namespace UnityEngine.Rendering.HighDefinition
 
         private void DisposeArrays()
         {
+            if (m_SortSupportArray.IsCreated)
+                m_SortSupportArray.Dispose();
+
             if (m_Capacity == 0)
                 return;
 
@@ -122,9 +127,28 @@ namespace UnityEngine.Rendering.HighDefinition
             UnsafeGenericPool<HDVisibleLightEntities>.Release(obj);
         }
 
+        private void SortLightKeys()
+        {
+            using (new ProfilingScope(null, ProfilingSampler.Get(HDProfileId.SortVisibleLights)))
+            {
+                //Tunning against ps4 console,
+                //32 items insertion sort has a workst case of 3 micro seconds.
+                //200 non recursive merge sort has around 23 micro seconds.
+                //From 200 and more, Radix sort beats everything.
+                if (m_Size <= 32)
+                    CoreUnsafeUtils.InsertionSort(m_SortKeys);
+                else if (m_Size <= 200)
+                    CoreUnsafeUtils.MergeSort(m_SortKeys, ref m_SortSupportArray);
+                else
+                    CoreUnsafeUtils.RadixSort(m_SortKeys, ref m_SortSupportArray);
+            }
+        }
+
         public void PrepareLightsForGPU(
-            HDCamera camera,
+            HDCamera hdCamera,
             in CullingResults cullingResult,
+            HDShadowManager shadowManager,
+            in HDShadowInitParameters inShadowInitParameters,
             in AOVRequestData aovRequestData,
             in GlobalLightLoopSettings lightLoopSettings,
             DebugDisplaySettings debugDisplaySettings)
@@ -135,10 +159,13 @@ namespace UnityEngine.Rendering.HighDefinition
                 return;
 
             FilterVisibleLightsByAOV(aovRequestData);
-            StartProcessVisibleLightJob(camera, cullingResult.visibleLights, lightLoopSettings, debugDisplaySettings);
+            StartProcessVisibleLightJob(hdCamera, cullingResult.visibleLights, lightLoopSettings, debugDisplaySettings);
             CompleteProcessVisibleLightJob();
-            ProcessShadows(cullingResult);
+
+            ProcessShadows(hdCamera, shadowManager, inShadowInitParameters, cullingResult);
             FilterProcessedLightsByDebugFilter(debugDisplaySettings);
+
+            SortLightKeys();
         }
 
         public static void Cleanup()
@@ -194,25 +221,39 @@ namespace UnityEngine.Rendering.HighDefinition
             }
         }
 
-        private void ProcessShadows(in CullingResults cullResults)
+        private void ProcessShadows(
+            HDCamera hdCamera,
+            HDShadowManager shadowManager,
+            in HDShadowInitParameters inShadowInitParameters,
+            in CullingResults cullResults)
         {
             int shadowLights = m_ProcessVisibleLightCounts[(int)ProcessLightsCountSlots.ShadowLights];
             if (shadowLights == 0)
                 return;
 
-            NativeArray<VisibleLight> visibleLights = cullResults.visibleLights;
-            for (int i = 0; i < shadowLights; ++i)
+            using (new ProfilingScope(null, ProfilingSampler.Get(HDProfileId.ProcessShadows)))
             {
-                int processedLightIndex = m_ShadowLightsDataIndices[i];
-                int visibleLightIndex = m_ProcessedVisibleLightIndices[processedLightIndex];
-                if (!cullResults.GetShadowCasterBounds(visibleLightIndex, out var bounds))
-                {
-                    m_ProcessedShadowMapFlags[processedLightIndex] = ShadowMapFlags.None;
-                    continue;
-                }
+                NativeArray<VisibleLight> visibleLights = cullResults.visibleLights;
+                var hdShadowSettings = hdCamera.volumeStack.GetComponent<HDShadowSettings>();
 
-                VisibleLight visibleLight = visibleLights[visibleLightIndex];
-                //todo, ReserveShadowMap here.
+                for (int i = 0; i < shadowLights; ++i)
+                {
+                    int processedLightIndex = m_ShadowLightsDataIndices[i];
+                    int visibleLightIndex = m_ProcessedVisibleLightIndices[processedLightIndex];
+                    if (!cullResults.GetShadowCasterBounds(visibleLightIndex, out var bounds))
+                    {
+                        m_ProcessedShadowMapFlags[processedLightIndex] = ShadowMapFlags.None;
+                        continue;
+                    }
+
+                    HDLightEntityData entityData = m_VisibleEntities[visibleLightIndex];
+                    HDAdditionalLightData additionalLightData = HDLightEntityCollection.instance.hdAdditionalLightData[entityData.dataIndex];
+                    if (additionalLightData == null)
+                        continue;
+
+                    VisibleLight visibleLight = visibleLights[visibleLightIndex];
+                    additionalLightData.ReserveShadowMap(hdCamera.camera, shadowManager, hdShadowSettings, inShadowInitParameters, visibleLight, m_ProcessedLightTypes[processedLightIndex]);
+                }
             }
         }
 
