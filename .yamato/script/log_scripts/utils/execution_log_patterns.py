@@ -35,6 +35,11 @@ execution_log_patterns = [
         'conclusion': 'inconclusive',
     },
     {
+        'pattern': r'(Failed after)(.+)(retries)',
+        'tags': ['retry'],
+        'conclusion': 'failure',
+    },
+    {
         'pattern': r'Reason\(s\): One or more tests have failed.', # this one is unused right now since yamato does it automatically
         'tags': ['tests'],
         'conclusion': 'failure',
