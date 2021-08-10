@@ -19,6 +19,20 @@ namespace UnityEngine.Rendering
         internal bool                       m_EnableHWDynamicScale = false;
         internal string                     m_Name;
 
+        internal bool                       m_UseCustomHandleScales = false;
+        internal RTHandleProperties         m_CustomHandleProperties;
+
+        public void SetCustomHandleProperties(in RTHandleProperties properties)
+        {
+            m_UseCustomHandleScales = true;
+            m_CustomHandleProperties = properties;
+        }
+
+        public void ClearCustomHandleProperties()
+        {
+            m_UseCustomHandleScales = false;
+        }
+
         /// <summary>
         /// Scale factor applied to the RTHandle reference size.
         /// </summary>
@@ -36,7 +50,7 @@ namespace UnityEngine.Rendering
         /// <summary>
         /// Current properties of the RTHandle System
         /// </summary>
-        public RTHandleProperties           rtHandleProperties { get { return m_Owner.rtHandleProperties; } }
+        public RTHandleProperties           rtHandleProperties { get { return m_UseCustomHandleScales ? m_CustomHandleProperties : m_Owner.rtHandleProperties; } }
         /// <summary>
         /// RenderTexture associated with the RTHandle
         /// </summary>
