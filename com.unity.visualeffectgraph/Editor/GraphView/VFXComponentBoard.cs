@@ -160,8 +160,8 @@ namespace UnityEditor.VFX.UI
             m_AttachButton = this.Query<Button>("attach");
             m_AttachButton.clickable.clicked += ToggleAttach;
 
-            m_SelectButton = this.Query<Button>("select");
-            m_SelectButton.clickable.clicked += Select;
+            //m_SelectButton = this.Query<Button>("select");
+            //m_SelectButton.clickable.clicked += Select;
 
             m_ComponentPath = this.Query<Label>("component-path");
 
@@ -545,7 +545,7 @@ namespace UnityEditor.VFX.UI
             if (m_EventsContainer != null)
                 m_EventsContainer.Clear();
             m_Events.Clear();
-            m_SelectButton.visible = false;
+            //m_SelectButton.visible = false;
             if (m_DebugUI != null)
                 m_DebugUI.Clear();
 
@@ -589,7 +589,7 @@ namespace UnityEditor.VFX.UI
                 if (m_ComponentContainer.parent == null)
                     m_ComponentContainerParent.Add(m_ComponentContainer);
                 UpdateEventList();
-                m_SelectButton.visible = true;
+                //m_SelectButton.visible = true;
 
                 var debugMode = VFXUIDebug.Modes.None;
                 if (m_DebugUI != null)
@@ -699,7 +699,7 @@ namespace UnityEditor.VFX.UI
         }
 
         Button m_AttachButton;
-        Button m_SelectButton;
+        //Button m_SelectButton;
         Label m_ComponentPath;
         VisualElement m_ComponentContainer;
         VisualElement m_EventsContainer;

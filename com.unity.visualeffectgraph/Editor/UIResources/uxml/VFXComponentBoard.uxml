@@ -10,7 +10,6 @@
             <ui:VisualElement name="attach-container">
                 <ui:Button name="attach" text="Attach" />
                 <ui:Label name="component-path" text="" pickingMode="Ignore"/>
-                <ui:Button name="select" text="select" />
             </ui:VisualElement>
             <ui:VisualElement name="divider" class="horizontal"/>
             <ui:VisualElement name="component-container">
