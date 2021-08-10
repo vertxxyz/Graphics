@@ -1399,7 +1399,7 @@ namespace UnityEngine.Rendering.HighDefinition
                                 passData.motionVecTexture = builder.ReadTexture(motionVectors);
 
                                 passData.source = builder.ReadTexture(source);
-                                passData.destination = builder.UseColorBuffer(renderGraph.CreateTexture(new TextureDesc(Vector2.one, true, true)
+                                passData.destination = builder.UseColorBuffer(renderGraph.CreateTexture(new TextureDesc(Vector2.one, IsDynamicResUpscaleTargetEnabled(), true)
                                     { colorFormat = GetPostprocessTextureFormat(), enableRandomWrite = true, name = "CustomPostProcesDestination" }), 0);
                                 passData.hdCamera = hdCamera;
                                 passData.customPostProcess = customPP;
