@@ -363,6 +363,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Support undo of HDRP Global Settings asset assignation (case 13429870).
 - Fixed an inconsistency between perf mode and quality mode for sky lighting (case 1350590).
 - Fixed an inconsistency between perf mode and quality mode for material simplification in RTGI (case 1350590).
+- Fixed the earth curvature not being properly taken into account when evaluating the sun attenuation (case 1357927).
 
 ### Changed
 - Changed Window/Render Pipeline/HD Render Pipeline Wizard to Window/Rendering/HDRP Wizard
